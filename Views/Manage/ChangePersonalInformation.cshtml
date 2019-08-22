@@ -1,0 +1,134 @@
+﻿<style type="text/css">
+    .MyForm {
+        width: 900px;
+    }
+    .MyCol {
+        min-width: 150px;
+    }
+</style>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+@model test1.Models.ChangePersonalInformation
+@{
+    ViewBag.Title = "تغییر اطلاعات کاربر";
+}
+
+<h2>@ViewBag.Title</h2>
+<p>
+    خواهشمند است به منظور مدیریت بهتر اطلاعات، فرم زیر را تکمیل نمایید. .
+</p>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#SelectedCountryCombo").change(function () {
+            $.ajax({
+                type: "POST",
+                url: "/home/ChangeState",
+                data: { SelectedCountry: $("#SelectedCountryCombo option:selected").prop('value') },
+                cache: false,
+                success: function (data) {
+                    var StateCombo = $("#SelectedStateCombo");
+                    StateCombo.empty();
+                    for (var x = 0; x < data.length; x++) {
+                        StateCombo.append("<option value=" + data[x].value + ">" + data[x].text + "</option>");
+
+                        var CityCombo = $("#SelectedCityCombo");
+                        CityCombo.empty();
+                        CityCombo.append("<option value=" + data[0].value + ">" + data[0].text + "</option>");
+                    }
+                },
+                error: function () {
+                    alert(" خطا در بارگذاری لیست استانها");
+                }
+            })
+        }),
+        $("#SelectedStateCombo").change(function () {
+            $.ajax({
+                type: "POST",
+                url: "/home/ChangeCity",
+                data: { SelectedState: $("#SelectedStateCombo option:selected").prop('value') },
+                cache: false,
+                success: function (data) {
+                    var CityCombo = $("#SelectedCityCombo");
+                    CityCombo.empty();
+                    for (var x = 0; x < data.length; x++) {
+                        CityCombo.append("<option value=" + data[x].value + ">" + data[x].text + "</option>");
+                    }
+                },
+                error: function () {
+                    alert(" خطا در بارگذاری لیست شهرها");
+                }
+            })
+        })
+    })
+</script>
+
+@using Microsoft.AspNet.Identity
+@using (Html.BeginForm("ChangePersonalInformation", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <center class="FormCover">
+        <div class="MyForm">
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="col-xs-6 form-group">
+                    @Html.LabelFor(m => m.Us_LName, new { @class = "MyCol" })
+                    @Html.EditorFor(m => m.Us_LName)
+                </div>
+                <div class="col-xs-6 form-group">
+                    @Html.LabelFor(m => m.Us_Name, new { @class = "MyCol" })
+                    @Html.EditorFor(m => m.Us_Name)
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-6 form-group">
+                    @Html.LabelFor(m => m.Us_BirthDay, new { @class = "MyCol" })
+                    @Html.EditorFor(m => m.Us_BirthDay)
+                </div>
+                <div class="col-xs-6 form-group">
+                    @Html.LabelFor(m => m.Us_Phone, new { @class = "MyCol" })
+                    @Html.EditorFor(m => m.Us_Phone)
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-6 form-group">
+                    @Html.LabelFor(m => m.Us_WorkAddress, new { @class = "MyCol" })
+                    @Html.TextAreaFor(m => m.Us_WorkAddress)
+                </div>
+                <div class="col-xs-6 form-group">
+                    @Html.LabelFor(m => m.Us_HomeAddress, new { @class = "MyCol" })
+                    @Html.TextAreaFor(m => m.Us_HomeAddress)
+                </div>
+            </div>
+            <div class="form-group">
+                <div id="StateContainer" class="col-xs-6 form-group">
+                    @Html.LabelFor(m => m.SelectedState, new { @class = "MyCol" })
+                    @Html.DropDownListFor(m => m.SelectedState, new SelectList(Model.States, "value", "text"), new { id = "SelectedStateCombo" })
+                </div>
+                <div class="col-xs-6 form-group">
+                    @Html.LabelFor(m => m.SelectedCountry, new { @class = "MyCol" })
+                    @Html.DropDownListFor(m => m.SelectedCountry, new SelectList(Model.Countries, "value", "text"), new { id = "SelectedCountryCombo" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-6 form-group">
+                </div>
+                <div class="col-xs-6 form-group">
+                    @Html.LabelFor(m => m.City_Ct_Id, new { @class = "MyCol" })
+                    @Html.DropDownListFor(m => m.City_Ct_Id, new SelectList(Model.Cities, "value", "text"), new { id = "SelectedCityCombo" })
+                </div>
+            </div>
+            <hr />
+            <div class="form-group">
+                <div class="col-xs-6 form-group">
+                </div>
+                <div class="col-xs-6 form-group">
+                    <input type="submit" value="ارسال" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </center>
+    <br />
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

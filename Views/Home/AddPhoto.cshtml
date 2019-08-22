@@ -1,0 +1,42 @@
+﻿<style>
+    body {direction: rtl;}
+    .dcell {display: table-cell; padding: 15px;}
+        .dcell > * { vertical-align: middle; }
+        #ErrorMessage {color:red; font-size: 12px; padding: 10px;}
+</style>
+ @model test1.Models.Gallery
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>   
+<script type="text/javascript">
+    var Ind = -1;
+    var EditOrAdd = true;
+    var PhotoPath = "";
+</script>
+
+@{
+    Layout = "";
+}
+
+@using (Html.BeginForm("AddPhoto", "Home", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{ 
+    if(ViewBag.Message!="")
+    {
+        <div>
+            <label id="ErrorMessage">@ViewBag.Message</label>
+        </div>
+    }
+    <div id="Col41" class="dcell">
+        @Html.LabelFor(m => m.Tmp_Ph_Title, new { @class = "col-md-2 control-label" })
+        @Html.EditorFor(m => m.Tmp_Ph_Title, new { @class = "form-control" })
+    </div>
+    <div id="Col42" class="dcell">
+        @Html.LabelFor(m => m.Tmp_Ph_Description, new { @class = "col-md-2 control-label" })
+        @Html.TextAreaFor(m => m.Tmp_Ph_Description, new { @class = "form-control" })
+    </div>
+    <div id="Col43" class="dcell">
+        <input type="file" id="SelectPhoto" name="file" value="انتخاب عکس" class="btn btn-default" accept="image/*" />
+    </div>
+    <div id="Col44" class="dcell">
+       <input type="submit" id="SavePhoto" value="ذخیره عکس" class="btn btn-default" />
+    </div>
+}
+

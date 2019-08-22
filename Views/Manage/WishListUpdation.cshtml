@@ -1,0 +1,160 @@
+﻿<style type="text/css">
+    .drow {
+        display: table-row;
+        min-width:300px;
+        text-align: center;
+    }
+    td {min-width: 70px;
+            text-align: right;
+            font-weight: bold;
+    }
+    .MyCol {
+        min-width: 50px;
+        text-align: right;
+        font-weight: bold;
+    }
+    #oblock {
+        direction: rtl;
+        background: #fdffc9;
+        padding: 25px;
+        padding-bottom: 25px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 600px;
+    }
+</style>
+
+@model test1.Models.WhishUpdationModel
+
+@{
+    ViewBag.Title = "اصلاح لیست مایحتاج";
+    AjaxOptions ajo = new AjaxOptions { HttpMethod = "POST", OnSuccess = "UpdateSuccessFunc"};
+    AjaxOptions ajo_add = new AjaxOptions { HttpMethod = "POST", OnSuccess = "AddSuccessFunc" };
+}
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#ItemDetails").hide();
+        $("#AddGood").click(function () {
+            $("#ItemDetails").show();
+            $("#UpdateBtn").prop("disabled", true);
+            $("#SeletedGroup").prop("disabled", true);
+        }),
+        $("#SeletedGroup").change(function () {
+            $("#GroupForm").submit();
+         })
+    })
+
+    function AddSuccessFunc(data)
+    {
+        if (data) {
+            alert('اطلاعات کالای مورد نیاز به درستی ثبت گردید');
+            $("#ItemDetails").hide();
+            location.reload();
+            $("#UpdateBtn").prop("disabled", false);
+            $("#SeletedGroup").prop("disabled", false);
+            $("#Gd_RequiredNo").prop("value", "0");
+            $("#Gd_Name").prop("value", "");
+        }
+        else
+            alert('خطایی در ذخیره اطلاعات وجود دارد');
+    }
+
+    function UpdateSuccessFunc(data) {
+        if (data) {
+            alert('تغییرات به درستی اعمال گردید')
+        }
+        else
+            alert('خطایی در ذخیره اطلاعات وجود دارد');
+    }
+</script>
+
+<h2>@ViewBag.Title</h2>
+
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+<center>
+    <div id="oblock">
+        @using (Html.BeginForm("WishListUpdation", "Manage", FormMethod.Post, new { SeletedGroup = Model.SeletedGroup, @id = "GroupForm" }))
+        {
+            <div id="Row0" class="drow">
+                @Html.LabelFor(m => m.Groups)
+            </div>
+            <div id="Row1" class="drow">
+                @Html.DropDownListFor(m => m.SeletedGroup, new SelectList(Model.Groups, "GG_Id", "GG_Name"))
+            </div>
+        }
+
+            @using (Ajax.BeginForm("SelectedWishListAjax", "Manage", ajo))
+            {
+                <br />
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                <div class="drow" id="Updation">
+                    <table>
+                        <tr class="drow" style="background-color:#ffd800">
+                            <td class="dcell"><label>نام کالا</label></td>
+                            <td class="dcell"><label>تعداد مورد نیاز</label></td>
+                        </tr>
+                        @{
+                            var i = 1;
+                            while (i <= Model.Goods.Count / 2)
+                            {
+                                var j = 2 * (i - 1);
+                                <tr class="drow">
+                                    <td class="dcell">@Html.DisplayFor(m => m.Goods[j].Gd_Name)</td>
+                                    <td class="dcell">@Html.EditorFor(m => m.Goods[j].Gd_RequiredNo)</td>
+                                    <td>@Html.HiddenFor(m => m.Goods[j].Gd_Id)</td>
+                                    <td class="dcell">@Html.DisplayFor(m => m.Goods[j + 1].Gd_Name)</td>
+                                    <td class="dcell">@Html.EditorFor(m => m.Goods[j + 1].Gd_RequiredNo)</td>
+                                    <td>@Html.HiddenFor(m => m.Goods[j + 1].Gd_Id)</td>
+                                </tr>
+                                i = i + 1;
+                            }
+                            if (Model.Goods.Count % 2 != 0)
+                            {
+                                var j = Model.Goods.Count - 1;
+                                <tr class="drow">
+                                    <td class="dcell">@Html.DisplayFor(m => m.Goods[j].Gd_Name)</td>
+                                    <td class="dcell">@Html.EditorFor(m => m.Goods[j].Gd_RequiredNo)</td>
+                                    <td>@Html.HiddenFor(m => m.Goods[j].Gd_Id)</td>
+                                </tr>
+                            }
+                        }
+                    </table>
+                </div>
+                <br />
+                <div class="drow">
+                    <input type="submit" value="اعمال اصلاحات انجام شده" id="UpdateBtn" class="btn btn-default" />
+                </div>
+            }
+             <br />
+            <div class="drow">
+                <input type="button" value="اضافه نمودن کالای جدید" id="AddGood" class="btn btn-default" />
+            </div>
+            <br />
+            @using (Ajax.BeginForm("AddWishListItemAjax", "Manage", ajo_add))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                <div id="ItemDetails">
+                    <div class="form-group">
+                        <div class="col-xs-6 form-group">
+                            @Html.LabelFor(m => m.AddingGood.Gd_RequiredNo, new { @class = "MyCol" })
+                            @Html.EditorFor(m => m.AddingGood.Gd_RequiredNo, new { @id = "Gd_RequiredNo" })
+                        </div>
+                        <div class="col-xs-6 form-group">
+                            @Html.LabelFor(m => m.AddingGood.Gd_Name, new { @class = "MyCol" })
+                            @Html.EditorFor(m => m.AddingGood.Gd_Name, new { @id = "Gd_Name" })
+                        </div>
+                    </div>
+                    @Html.HiddenFor(m => m.AddingGood.GG_Id)
+                    <div class="drow">
+                         <input type="submit" value="ذخیره" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+        </div>
+</center>
+<br />

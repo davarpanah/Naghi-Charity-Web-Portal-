@@ -1,0 +1,5 @@
+﻿@using (@Html.BeginForm("NewPhotoSlide", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="file" id="file" accept="image/*" />
+    <input type="submit" id="NewPhotoSlide" value="عکس جدید" class="btn alert-danger" />
+}

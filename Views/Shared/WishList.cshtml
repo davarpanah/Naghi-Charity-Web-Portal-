@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "لیست اقلام مورد نیاز موسسه";
+}
+
+<style type="text/css">
+    body {direction: rtl;}
+    h2   {text-align: center;}
+    td   {vertical-align: top;border-style: ridge; font-size: medium; border-color: ActiveBorder; border-width: thin; min-width: 130px}
+    table{text-align: center; margin: 20px}
+       p {font-size: medium;}
+</style>
+
+<h2>@ViewBag.Title</h2><br>
+<p>
+لیست اقلام مورد نیاز موسسه در حال حاضر به شرح زیر خدمتتان عرضه می گردد.</p>
+@model List<test1.Models.GoodGroup>
+    <center>
+        <table>
+            <tr>
+                @foreach (var item in Model)
+                {
+                    <td>
+                        <center style="font-weight: bold">@item.GG_Name</center>
+                        <table>
+                            <tr style="background-color:#74b2e6">
+                                <td>نام کالا</td>
+                                <td>تعداد مورد نیاز</td>
+                            </tr>
+                            @foreach (var item2 in @item.Goods)
+                            {
+                                <tr>
+                                    <td>@item2.Gd_Name</td>
+                                    <td>@item2.Gd_RequiredNo</td>
+                                </tr>
+                            }
+                        </table>
+                    </td>
+                }
+            </tr>
+        </table>
+    </center>
+<br />

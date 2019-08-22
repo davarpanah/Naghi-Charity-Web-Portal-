@@ -1,0 +1,54 @@
+﻿<style type="text/css">
+     .table {
+        margin: 4px;
+        border-collapse: collapse;
+        background: #fcec8f;
+        width: 400px;
+    }
+    .header {
+        background-color: #fdffc9;
+        font-weight: bold;
+        color: #ff0000;
+        text-align: center;
+    }
+    .table th, .table td {
+        border: 1px solid  thick;
+        padding: 15px;
+        min-width: 120PX;
+        text-align: center;
+    }
+</style>
+
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+@model List<test1.Models.OnlinePaymentModel>
+@{
+    ViewBag.Title = "پرداختهای آنلاین من";
+    WebGrid grid = new WebGrid(Model, rowsPerPage: 5);
+}
+<h2>@ViewBag.Title</h2>
+<p>
+   حامی گرامی ضمن تشکر از حمایت جنابعالی تا این لحظه پرداختمهای آنلاین زیر در سیستم ثبت شده است</p>
+<center>
+@grid.GetHtml(
+        tableStyle: "table", // applying style on grid
+        fillEmptyRows: true,
+        //show empty row when there is only one record on page to it will display all empty rows there.
+        headerStyle: "header", //applying style.
+        footerStyle: "grid-footer", //applying style.
+        mode: WebGridPagerModes.All, //paging to grid
+        firstText: "<< First",
+        previousText: "< Prev",
+        nextText: "Next >",
+        lastText: "Last >>",
+        columns: new[] // colums in grid
+        {
+            grid.Column("Do_Id","شماره پرداخت"), //the model fields to display
+            grid.Column("Us_Name","نام"),
+            grid.Column("Us_LName","نام خانوادگی"),
+            grid.Column("Do_Date","تاریخ پرداخت"),
+            grid.Column("DoR_Amount","مقدار پرداختی")
+        }
+       )
+    <br />
+</center>

@@ -1,0 +1,262 @@
+﻿<style>
+    body {
+        direction: rtl;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    .dtable {
+        display: table;
+        border: 3px solid green;
+    }
+
+    .drow {
+        display: table-row;
+        border: 3px solid green;
+    }
+
+    .dcell {
+        display: table-cell;
+        padding: 15px;
+    }
+
+        .dcell > * {
+            vertical-align: middle;
+        }
+
+    img {
+        width: 70px;
+        height: 30px;
+        padding: 10px;
+    }
+
+    #oblock {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        min-width: 700px;
+    }
+
+    .ImgEdit, .ImgDelete {
+        font-size: 8px;
+        width: 35px;
+        height: 17px;
+    }
+
+    .imgtitle {
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .imgdescription {
+        font-size: 12px;
+    }
+
+    .ErrorMessage {
+        margin-top: 2em;
+        margin-right: 2em;
+        color: red;
+        font-size: 12px;
+    }
+</style>
+@{
+    ViewBag.Title = "ایجاد گالری جدید";
+}
+
+@model test1.Models.MyGalleryModel
+<h2>@ViewBag.Title</h2>
+@{
+    Layout = "";
+    AjaxOptions ajo = new AjaxOptions { HttpMethod = "POST", OnSuccess = "AdditionSuccessFunc" };
+}
+
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+<script type="text/javascript">
+    var ImageNo = -1;
+    var Ind = -1;
+    var EditOrAdd = false;
+    $(document).ready(function () {
+        $("#Row4").hide();
+
+        $("#AddPhoto").click(function () {
+            $("#Row4").show();
+            EditOrAdd = false;
+            $("#Ph_Title").prop('value', 'Title');
+            $("#Ph_Description").prop('value', 'Description');
+            $("#SelectPhoto").prop('disabled', false);
+        }),
+
+        /*$("#SavePhotoBtn").click(function () {
+
+            //alert("sdvsdvsdvsdv");
+            //file1 = document.getElementById('SelectPhoto').files[0];
+            //$("#GroupTitle2").prop('value', $("#GroupTit").val());
+            //$("#GroupDescription2").prop('value', $("#GroupDescription").prop('value'));
+            var formData = new FormData();
+            for (var x = 0; x < files.length; x++) {
+                formData.append("file" + x, files[x]);
+            }
+            alert("sdvsdvsdvsdv");
+            $.ajax({
+                url: "SavePhoto",//$(this).attr('action'),
+                type: "POST",//$(this).attr('method'),
+                data: formData,
+                async: false,
+                success: function (data) {
+                    alert(' عکس انتخابی به درستی ذخیره شد');
+                },
+                error: function () {
+                    alert('خطا در ذخیره عکس انتخابی');
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+            //$(this).preventDefault();
+            //return false;
+            //return false;
+        }),
+
+        /*jQuery.ajax({
+            url: 'home/MyPhoto',
+            data: data,
+            cache: false,
+            contentType: "multipart / form - data",
+            processData: false,
+            type: 'POST',
+            success: function (data) {
+                //alert(data);
+                alert("gqwegwegwegw");
+            }
+        }),
+        $("#SavePhoto").submit(function (e) {
+            if (EditOrAdd == false) {
+                alert("agragergrg");
+                 //e.submit();
+                 //return true;
+                 $.ajax({
+                     type: "POST",
+                     url: "/Home/SavePhoto",
+                     contentType: "multipart / form - data",
+                     //contentType: "application/json",
+                     //data: jQuery("#AddForm").serialize(),
+                     //cache: false,
+                     data:  $(this).serialize(),
+                     success: function (TheResult) {
+                         alert(" ذخیره تصویر به درستی انجام پذیرفت");
+                     },
+                     error: function () {
+                         alert(" خطا در ذخیره تصویر");
+                     }
+                 })
+             }
+             else {
+                 jQuery("#Imgtitle").eq(Ind).prop('value', jQuery("#Ph_Title").prop('value'));
+                 jQuery("#ImgDescription").eq(Ind).prop('value', jQuery("#Ph_Description").prop('value'));
+                 EditOrAdd = false;
+                 $("#Row4").hide();
+                 jQuery("#SelectPhoto").prop('disabled', false);
+                 //e.preventDefault();
+                 //return false;
+             }
+         }),*/
+        $(".ImgEdit").click(function (e) {
+            var clicked = $(e.target);
+            $("#Ph_Title").prop('value', clicked.siblings(0).filter('label').eq(0).text());
+            $("#Ph_Description").prop('value', clicked.siblings(0).filter('label').eq(1).text());
+            $("#SelectPhoto").prop('disabled', true);
+            $("#Row4").show();
+            EditOrAdd = true;
+            Ind = parseInt(clicked.prop('id'));
+        }),
+        $(".ImgDelete").click(function (e) {
+            var r = confirm("مطمئن به حذف عکس هستید؟");
+            if (r == true) {
+                var clicked = $(e.target);
+                clicked.siblings(0).filter('label').css('color', 'red');//title and description
+                clicked.siblings(0).filter('input').eq(0).prop('disabled', true);
+                clicked.siblings(0).filter('input').eq(1).prop('disabled', true);
+                //var DeletedImgs = $("#HiddenImges").prop('value') + ' ' + clicked.prop('id');
+                //$("#Tmp_HiddenImges").prop('value', DeletedImgs);
+            }
+        })
+    })
+    function AdditionSuccessFunc() {
+        alert("fdqwfqwfqwf");
+    }
+    function FileSelectedFunc() {
+        //$("#PhotoPath").prop('value', $('input[type=file]').val());
+    }
+</script>
+
+<center>
+    <div id="oblock">
+        @using (Html.BeginForm("Gallery", "Home", FormMethod.Post))
+        {
+            if (Model != null && Model.StatusMessage != "")
+            {
+                <div id='Message' class='drow'>
+                    <label class='ErrorMessage'>@Model.StatusMessage</label>
+                </div>
+            }
+            <div id="Row1" class="drow">
+                <div id="Col11" class="dcell">
+                    @Html.LabelFor(m => m.Ga_Title, new { @class = "col-md-2 control-label" })
+                    @Html.EditorFor(m => m.Ga_Title, new { @class = "form-control", @id = "GroupTitle" })
+                    @Html.LabelFor(m => m.Ga_Description, new { @class = "col-md-2 control-label" })
+                    @Html.TextAreaFor(m => m.Ga_Description, new { @class = "form-control", @id = "GroupDescription" })
+                </div>
+            </div>
+            <div id="Row2" class="drow"></div>
+            <div id="Row3" class="drow">
+                <div id="Col31" class="dcell">
+                    <input type="button" id="AddPhoto" value="اضافه کردن عکس جدید" class="btn btn-default" />
+                </div>
+            </div>
+                      
+            <div id="Row5" class="drow">
+                <div id="Col51" class="dcell">
+                    <input type="submit" value="ذخیره آلبوم" class="btn btn-default" />
+                </div>
+            </div>
+        }
+    </div>
+    <div id='Row4' class='drow'>
+        @Html.Action("MyPhoto")
+    </div>
+</center>
+
+
+@*using (Ajax.BeginForm("SavePhoto", "Home", ajo, new { MyLmd = Model, @id = "SavePhoto", @contentType = "multipart/mixed" }))
+
+    <form id="SavePhoto">
+
+        @Html.HiddenFor(M => M.Ga_Id);
+        <div id="Col41" class="dcell">
+            @Html.LabelFor(m => m.AddingPhoto.Ph_Title, new { @class = "col-md-2 control-label" })
+            @Html.EditorFor(m => m.AddingPhoto.Ph_Title, new { @class = "form-control" })
+        </div>
+        <div id="Col42" class="dcell">
+            @Html.LabelFor(m => m.AddingPhoto.Ph_Description, new { @class = "col-md-2 control-label" })
+            @Html.TextAreaFor(m => m.AddingPhoto.Ph_Description, new { @class = "form-control" })
+        </div>
+        @Html.HiddenFor(m => m.AddingPhoto.Ph_Path, new { @id = "PhotoPath" })
+        @Html.HiddenFor(m => m.Ga_Title, new { @id = "GroupTitle2" })
+        @Html.HiddenFor(m => m.Ga_Description, new { @id = "GroupDescription2" })
+        <div id="Col43" class="dcell">
+            <input type="file" id="SelectPhoto" name="file" value="انتخاب عکس" class="btn btn-default" accept="image/*" onchange="FileSelectedFunc();" />
+        </div>
+        <div id="Col44" class="dcell">
+            <input type="submit" id="SavePhotoBtn" value="ذخیره عکس" class="btn btn-default" />
+        </div>
+    </form>
+*@
+
+
+
+
+

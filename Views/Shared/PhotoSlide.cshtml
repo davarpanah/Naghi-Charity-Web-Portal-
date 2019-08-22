@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "";
+    //AjaxOptions ajaxOpts = new AjaxOptions { UpdateTargetId = "SlideshowImages" };
+}
+@model List<test1.Models.PhotoSlide>
+
+@using (@Html.BeginForm())
+{
+    <div id="SlideshowImages">
+        @foreach (var item in Model)
+        {
+            <div><img src="@Url.Content(item.Ph_Path)" height="250" width="1030"></div>
+        }
+    </div>
+}
+
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#SlideshowImages > div:gt(0)").hide();
+        setInterval(function () {
+            $('#SlideshowImages > div:first').fadeOut(0).next().fadeIn(1000).end().appendTo('#SlideshowImages');
+        }, 3000);
+    })
+</script>
+
+

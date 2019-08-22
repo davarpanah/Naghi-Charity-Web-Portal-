@@ -1,0 +1,75 @@
+﻿
+<style type="text/css">
+    table {
+        margin: 4px;
+        border-collapse: collapse;
+        background: #fcec8f;
+        width: 400px;
+    }
+    table th {
+        background-color: #fdffc9;
+        font-weight: bold;
+        color: #808080;
+        border: 1px solid thick;
+        padding: 15px;
+        min-width: 50px;
+        text-align: center;
+    }
+    table td {
+        border: 1px solid thick ;
+        padding: 15px;
+        min-width: 50px;
+        text-align: center;
+    }
+</style>
+
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+@model List<test1.Models.UserActivationModel>
+@{
+    ViewBag.Title = "فعال وغیر فعال نمودن کاربران";
+    //WebGrid grid = new WebGrid(Model, rowsPerPage: 5);
+}
+<h2>@ViewBag.Title</h2>
+<p>
+    می توانید از طریق این پیج کاربران را  فعال و یا غیر فعال نمایید
+</p>
+<center>
+    @using (Html.BeginForm("UserActivation", "Manage", FormMethod.Post, new { lmd=Model}))
+    {
+        <table>
+            <tr>
+                @if (Model.Count > 0)
+                {
+                    <th>@Html.LabelFor(m => m[0].Us_Name)</th>
+                    <th>@Html.LabelFor(m => m[0].Us_LName)</th>
+                    <th>@Html.LabelFor(m => m[0].Us_Email)</th>
+                    <th>@Html.LabelFor(m => m[0].Us_Active)</th>
+                }
+            </tr>
+            @for (var i = 0; i < Model.Count; ++i)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => m[i].Us_Name)</td>
+                    <td>@Html.DisplayFor(m => m[i].Us_LName)</td>
+                    <td>@Html.DisplayFor(m => m[i].Us_Email)</td>
+                    <td>@Html.CheckBoxFor(m =>m[i].Us_Active)</td>
+                </tr>
+                @Html.HiddenFor(m => m[i].Us_Name)
+                @Html.HiddenFor(m => m[i].Us_LName)
+                @Html.HiddenFor(m => m[i].Us_Email)
+                @Html.HiddenFor(m => m[i].Us_Unic_Number)
+            }
+        </table>
+        <br />
+        if (Model.Count > 0)
+        {
+            <input type="submit" value="اعمال تغییرات">
+        }
+        else
+        {
+            <input type="submit" value="اعمال تغییرات" disabled>
+        }
+    }
+    <br />
+</center>
+

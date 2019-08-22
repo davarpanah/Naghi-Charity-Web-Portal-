@@ -1,0 +1,546 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NaghiInistituteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AssignedRoleSet">
+    <Key>
+      <PropertyRef Name="As_Id" />
+    </Key>
+    <Property Name="As_Active" Type="bit" Nullable="false" />
+    <Property Name="As_Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Role_Rol_Id" Type="tinyint" Nullable="false" />
+    <Property Name="UserGroup_Gr_Id" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CitySet">
+    <Key>
+      <PropertyRef Name="Ct_Id" />
+    </Key>
+    <Property Name="Ct_Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ct_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ct_Latin" Type="nvarchar(max)" />
+    <Property Name="Ct_Tel_Code" Type="tinyint" />
+    <Property Name="State_St_Id" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CountrySet">
+    <Key>
+      <PropertyRef Name="Co_Id" />
+    </Key>
+    <Property Name="Co_Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Co_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Co_Latin" Type="nvarchar(max)" />
+    <Property Name="Co_Tel_Code" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="DailyPointsSet">
+    <Key>
+      <PropertyRef Name="DP_Id" />
+    </Key>
+    <Property Name="DP_Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DP_Sayer" Type="nvarchar(max)" />
+    <Property Name="DP_Point" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="User_Us_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="DonateRowSet">
+    <Key>
+      <PropertyRef Name="DR_Id" />
+    </Key>
+    <Property Name="DR_Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DR_Amount" Type="smallint" Nullable="false" />
+    <Property Name="Donate_Do_Id" Type="int" Nullable="false" />
+    <Property Name="Good_Gd_Id" Type="smallint" />
+    <Property Name="PaymentType_PT_Id" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="DonateSet">
+    <Key>
+      <PropertyRef Name="Do_Id" />
+    </Key>
+    <Property Name="Do_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Do_Date" Type="datetime" Nullable="false" />
+    <Property Name="Do_Type" Type="tinyint" Nullable="false" />
+    <Property Name="Donator_Us_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DoneContactSet">
+    <Key>
+      <PropertyRef Name="DC_Id" />
+    </Key>
+    <Property Name="DC_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DC_Date" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ContactType_CT_Code" Type="tinyint" Nullable="false" />
+    <Property Name="Donator_Us_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GallarySet">
+    <Key>
+      <PropertyRef Name="Ga_Id" />
+    </Key>
+    <Property Name="Ga_Id" Type="tinyint" Nullable="false" />
+    <Property Name="Ga_Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ga_Description" Type="nvarchar(max)" />
+    <Property Name="Ga_Showable" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GoodGroupSet">
+    <Key>
+      <PropertyRef Name="GG_Id" />
+    </Key>
+    <Property Name="GG_Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GG_Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GoodSet">
+    <Key>
+      <PropertyRef Name="Gd_Id" />
+    </Key>
+    <Property Name="Gd_Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Gd_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Gd_RequiredNo" Type="smallint" Nullable="false" />
+    <Property Name="GoodGroup_GG_Id" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InistituteSet">
+    <Key>
+      <PropertyRef Name="In_Id" />
+    </Key>
+    <Property Name="In_Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="In_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="In_BankCard" Type="nvarchar(max)" />
+    <Property Name="In_BankAccount" Type="bigint" />
+    <Property Name="In_Address" Type="nvarchar(max)" />
+    <Property Name="In_Mng_Mob" Type="bigint" />
+    <Property Name="In_Tel" Type="nvarchar(max)" />
+    <Property Name="In_Fax" Type="nvarchar(max)" />
+    <Property Name="In_Email" Type="nvarchar(max)" />
+    <Property Name="In_WbAddress" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="LogSet">
+    <Key>
+      <PropertyRef Name="Lg_Id" />
+    </Key>
+    <Property Name="Lg_Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Lg_Date" Type="datetime" Nullable="false" />
+    <Property Name="User_Us_ID" Type="int" Nullable="false" />
+    <Property Name="Role_Rol_Id" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NewsSet">
+    <Key>
+      <PropertyRef Name="Nw_Id" />
+    </Key>
+    <Property Name="Nw_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nw_Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Nw_Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Nw_Type" Type="tinyint" Nullable="false" />
+    <Property Name="User_Us_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="PaymentTypeSet">
+    <Key>
+      <PropertyRef Name="PT_Id" />
+    </Key>
+    <Property Name="PT_Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PT_Description" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PhotoSet">
+    <Key>
+      <PropertyRef Name="Ph_Id" />
+    </Key>
+    <Property Name="Ph_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ph_Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ph_Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ph_Path" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ph_Showable" Type="bit" Nullable="false" />
+    <Property Name="Ph_Link" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Gallary_Ga_Id" Type="tinyint" />
+    <Property Name="News_Nw_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="RoleSet">
+    <Key>
+      <PropertyRef Name="Rol_Id" />
+    </Key>
+    <Property Name="Rol_Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ro_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ro_Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StateSet">
+    <Key>
+      <PropertyRef Name="St_Id" />
+    </Key>
+    <Property Name="St_Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="St_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="St_Latin" Type="nvarchar(max)" />
+    <Property Name="Country_Co_Id" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="UserGroupSet">
+    <Key>
+      <PropertyRef Name="Gr_Id" />
+    </Key>
+    <Property Name="Gr_Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Gr_Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserSet">
+    <Key>
+      <PropertyRef Name="Us_ID" />
+    </Key>
+    <Property Name="Us_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Us_Name" Type="nvarchar(max)" />
+    <Property Name="Us_LName" Type="nvarchar(max)" />
+    <Property Name="Us_Active" Type="bit" Nullable="false" />
+    <Property Name="Us_BirthDay" Type="datetime" />
+    <Property Name="Us_Phone" Type="bigint" />
+    <Property Name="Us_Mob" Type="bigint" />
+    <Property Name="Us_HomeAddress" Type="nvarchar(max)" />
+    <Property Name="Us_WorkAddress" Type="nvarchar(max)" />
+    <Property Name="Us_Email" Type="nvarchar(max)" />
+    <Property Name="Us_Reg_Date" Type="datetime" Nullable="false" />
+    <Property Name="City_Ct_Id" Type="smallint" Nullable="false" />
+    <Property Name="UserGroup_Gr_Id" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserSet_Donator">
+    <Key>
+      <PropertyRef Name="Us_ID" />
+    </Key>
+    <Property Name="Dr_HelpDay" Type="tinyint" Nullable="false" />
+    <Property Name="Us_ID" Type="int" Nullable="false" />
+    <Property Name="PreferReType_CT_Code" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_CityUser">
+    <End Role="CitySet" Type="Self.CitySet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserSet" Type="Self.UserSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CitySet">
+        <PropertyRef Name="Ct_Id" />
+      </Principal>
+      <Dependent Role="UserSet">
+        <PropertyRef Name="City_Ct_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CountryState">
+    <End Role="CountrySet" Type="Self.CountrySet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="StateSet" Type="Self.StateSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CountrySet">
+        <PropertyRef Name="Co_Id" />
+      </Principal>
+      <Dependent Role="StateSet">
+        <PropertyRef Name="Country_Co_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DonateDonateRow">
+    <End Role="DonateSet" Type="Self.DonateSet" Multiplicity="1" />
+    <End Role="DonateRowSet" Type="Self.DonateRowSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DonateSet">
+        <PropertyRef Name="Do_Id" />
+      </Principal>
+      <Dependent Role="DonateRowSet">
+        <PropertyRef Name="Donate_Do_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Donator_inherits_User">
+    <End Role="UserSet" Type="Self.UserSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserSet_Donator" Type="Self.UserSet_Donator" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="UserSet">
+        <PropertyRef Name="Us_ID" />
+      </Principal>
+      <Dependent Role="UserSet_Donator">
+        <PropertyRef Name="Us_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DonatorDoneContact">
+    <End Role="UserSet_Donator" Type="Self.UserSet_Donator" Multiplicity="1" />
+    <End Role="DoneContactSet" Type="Self.DoneContactSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserSet_Donator">
+        <PropertyRef Name="Us_ID" />
+      </Principal>
+      <Dependent Role="DoneContactSet">
+        <PropertyRef Name="Donator_Us_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DonatorPayment">
+    <End Role="UserSet_Donator" Type="Self.UserSet_Donator" Multiplicity="1" />
+    <End Role="DonateSet" Type="Self.DonateSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserSet_Donator">
+        <PropertyRef Name="Us_ID" />
+      </Principal>
+      <Dependent Role="DonateSet">
+        <PropertyRef Name="Donator_Us_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GallaryPhoto">
+    <End Role="GallarySet" Type="Self.GallarySet" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PhotoSet" Type="Self.PhotoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GallarySet">
+        <PropertyRef Name="Ga_Id" />
+      </Principal>
+      <Dependent Role="PhotoSet">
+        <PropertyRef Name="Gallary_Ga_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GoodGroupGood">
+    <End Role="GoodGroupSet" Type="Self.GoodGroupSet" Multiplicity="1" />
+    <End Role="GoodSet" Type="Self.GoodSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GoodGroupSet">
+        <PropertyRef Name="GG_Id" />
+      </Principal>
+      <Dependent Role="GoodSet">
+        <PropertyRef Name="GoodGroup_GG_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GoodHelp_Row">
+    <End Role="GoodSet" Type="Self.GoodSet" Multiplicity="0..1" />
+    <End Role="DonateRowSet" Type="Self.DonateRowSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GoodSet">
+        <PropertyRef Name="Gd_Id" />
+      </Principal>
+      <Dependent Role="DonateRowSet">
+        <PropertyRef Name="Good_Gd_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NewsPhoto">
+    <End Role="NewsSet" Type="Self.NewsSet" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PhotoSet" Type="Self.PhotoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NewsSet">
+        <PropertyRef Name="Nw_Id" />
+      </Principal>
+      <Dependent Role="PhotoSet">
+        <PropertyRef Name="News_Nw_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PaymentTypeHelpRow">
+    <End Role="PaymentTypeSet" Type="Self.PaymentTypeSet" Multiplicity="0..1" />
+    <End Role="DonateRowSet" Type="Self.DonateRowSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentTypeSet">
+        <PropertyRef Name="PT_Id" />
+      </Principal>
+      <Dependent Role="DonateRowSet">
+        <PropertyRef Name="PaymentType_PT_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleAssignedRole">
+    <End Role="RoleSet" Type="Self.RoleSet" Multiplicity="1" />
+    <End Role="AssignedRoleSet" Type="Self.AssignedRoleSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoleSet">
+        <PropertyRef Name="Rol_Id" />
+      </Principal>
+      <Dependent Role="AssignedRoleSet">
+        <PropertyRef Name="Role_Rol_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleLog">
+    <End Role="RoleSet" Type="Self.RoleSet" Multiplicity="1" />
+    <End Role="LogSet" Type="Self.LogSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoleSet">
+        <PropertyRef Name="Rol_Id" />
+      </Principal>
+      <Dependent Role="LogSet">
+        <PropertyRef Name="Role_Rol_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StateCity">
+    <End Role="StateSet" Type="Self.StateSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CitySet" Type="Self.CitySet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StateSet">
+        <PropertyRef Name="St_Id" />
+      </Principal>
+      <Dependent Role="CitySet">
+        <PropertyRef Name="State_St_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserDailyPoints">
+    <End Role="UserSet" Type="Self.UserSet" Multiplicity="0..1" />
+    <End Role="DailyPointsSet" Type="Self.DailyPointsSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserSet">
+        <PropertyRef Name="Us_ID" />
+      </Principal>
+      <Dependent Role="DailyPointsSet">
+        <PropertyRef Name="User_Us_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserGroupAssignedRole">
+    <End Role="UserGroupSet" Type="Self.UserGroupSet" Multiplicity="1" />
+    <End Role="AssignedRoleSet" Type="Self.AssignedRoleSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserGroupSet">
+        <PropertyRef Name="Gr_Id" />
+      </Principal>
+      <Dependent Role="AssignedRoleSet">
+        <PropertyRef Name="UserGroup_Gr_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserGroupUser">
+    <End Role="UserGroupSet" Type="Self.UserGroupSet" Multiplicity="1" />
+    <End Role="UserSet" Type="Self.UserSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserGroupSet">
+        <PropertyRef Name="Gr_Id" />
+      </Principal>
+      <Dependent Role="UserSet">
+        <PropertyRef Name="UserGroup_Gr_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserLog">
+    <End Role="UserSet" Type="Self.UserSet" Multiplicity="1" />
+    <End Role="LogSet" Type="Self.LogSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserSet">
+        <PropertyRef Name="Us_ID" />
+      </Principal>
+      <Dependent Role="LogSet">
+        <PropertyRef Name="User_Us_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserNews">
+    <End Role="UserSet" Type="Self.UserSet" Multiplicity="0..1" />
+    <End Role="NewsSet" Type="Self.NewsSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserSet">
+        <PropertyRef Name="Us_ID" />
+      </Principal>
+      <Dependent Role="NewsSet">
+        <PropertyRef Name="User_Us_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NaghiInistituteModelStoreContainer">
+    <EntitySet Name="AssignedRoleSet" EntityType="Self.AssignedRoleSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CitySet" EntityType="Self.CitySet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CountrySet" EntityType="Self.CountrySet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DailyPointsSet" EntityType="Self.DailyPointsSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DonateRowSet" EntityType="Self.DonateRowSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DonateSet" EntityType="Self.DonateSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DoneContactSet" EntityType="Self.DoneContactSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GallarySet" EntityType="Self.GallarySet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GoodGroupSet" EntityType="Self.GoodGroupSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GoodSet" EntityType="Self.GoodSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InistituteSet" EntityType="Self.InistituteSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogSet" EntityType="Self.LogSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NewsSet" EntityType="Self.NewsSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentTypeSet" EntityType="Self.PaymentTypeSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhotoSet" EntityType="Self.PhotoSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoleSet" EntityType="Self.RoleSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StateSet" EntityType="Self.StateSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserGroupSet" EntityType="Self.UserGroupSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserSet" EntityType="Self.UserSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserSet_Donator" EntityType="Self.UserSet_Donator" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CityUser" Association="Self.FK_CityUser">
+      <End Role="CitySet" EntitySet="CitySet" />
+      <End Role="UserSet" EntitySet="UserSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CountryState" Association="Self.FK_CountryState">
+      <End Role="CountrySet" EntitySet="CountrySet" />
+      <End Role="StateSet" EntitySet="StateSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DonateDonateRow" Association="Self.FK_DonateDonateRow">
+      <End Role="DonateSet" EntitySet="DonateSet" />
+      <End Role="DonateRowSet" EntitySet="DonateRowSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Donator_inherits_User" Association="Self.FK_Donator_inherits_User">
+      <End Role="UserSet" EntitySet="UserSet" />
+      <End Role="UserSet_Donator" EntitySet="UserSet_Donator" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DonatorDoneContact" Association="Self.FK_DonatorDoneContact">
+      <End Role="UserSet_Donator" EntitySet="UserSet_Donator" />
+      <End Role="DoneContactSet" EntitySet="DoneContactSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DonatorPayment" Association="Self.FK_DonatorPayment">
+      <End Role="UserSet_Donator" EntitySet="UserSet_Donator" />
+      <End Role="DonateSet" EntitySet="DonateSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GallaryPhoto" Association="Self.FK_GallaryPhoto">
+      <End Role="GallarySet" EntitySet="GallarySet" />
+      <End Role="PhotoSet" EntitySet="PhotoSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GoodGroupGood" Association="Self.FK_GoodGroupGood">
+      <End Role="GoodGroupSet" EntitySet="GoodGroupSet" />
+      <End Role="GoodSet" EntitySet="GoodSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GoodHelp_Row" Association="Self.FK_GoodHelp_Row">
+      <End Role="GoodSet" EntitySet="GoodSet" />
+      <End Role="DonateRowSet" EntitySet="DonateRowSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NewsPhoto" Association="Self.FK_NewsPhoto">
+      <End Role="NewsSet" EntitySet="NewsSet" />
+      <End Role="PhotoSet" EntitySet="PhotoSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PaymentTypeHelpRow" Association="Self.FK_PaymentTypeHelpRow">
+      <End Role="PaymentTypeSet" EntitySet="PaymentTypeSet" />
+      <End Role="DonateRowSet" EntitySet="DonateRowSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleAssignedRole" Association="Self.FK_RoleAssignedRole">
+      <End Role="RoleSet" EntitySet="RoleSet" />
+      <End Role="AssignedRoleSet" EntitySet="AssignedRoleSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleLog" Association="Self.FK_RoleLog">
+      <End Role="RoleSet" EntitySet="RoleSet" />
+      <End Role="LogSet" EntitySet="LogSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StateCity" Association="Self.FK_StateCity">
+      <End Role="StateSet" EntitySet="StateSet" />
+      <End Role="CitySet" EntitySet="CitySet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserDailyPoints" Association="Self.FK_UserDailyPoints">
+      <End Role="UserSet" EntitySet="UserSet" />
+      <End Role="DailyPointsSet" EntitySet="DailyPointsSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserGroupAssignedRole" Association="Self.FK_UserGroupAssignedRole">
+      <End Role="UserGroupSet" EntitySet="UserGroupSet" />
+      <End Role="AssignedRoleSet" EntitySet="AssignedRoleSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserGroupUser" Association="Self.FK_UserGroupUser">
+      <End Role="UserGroupSet" EntitySet="UserGroupSet" />
+      <End Role="UserSet" EntitySet="UserSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserLog" Association="Self.FK_UserLog">
+      <End Role="UserSet" EntitySet="UserSet" />
+      <End Role="LogSet" EntitySet="LogSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserNews" Association="Self.FK_UserNews">
+      <End Role="UserSet" EntitySet="UserSet" />
+      <End Role="NewsSet" EntitySet="NewsSet" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

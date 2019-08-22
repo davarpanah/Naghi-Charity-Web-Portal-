@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NaghiEDMStoreContainer" CdmEntityContainer="NaghiEDMContainer">
+    <EntitySetMapping Name="UserSet">
+      <EntityTypeMapping TypeName="IsTypeOf(NaghiEDM.User)">
+        <MappingFragment StoreEntitySet="UserSet">
+          <ScalarProperty Name="Us_ID" ColumnName="Us_ID" />
+          <ScalarProperty Name="Us_Name" ColumnName="Us_Name" />
+          <ScalarProperty Name="Us_LName" ColumnName="Us_LName" />
+          <ScalarProperty Name="Us_Active" ColumnName="Us_Active" />
+          <ScalarProperty Name="Us_BirthDay" ColumnName="Us_BirthDay" />
+          <ScalarProperty Name="Us_Phone" ColumnName="Us_Phone" />
+          <ScalarProperty Name="Us_Mob" ColumnName="Us_Mob" />
+          <ScalarProperty Name="Us_HomeAddress" ColumnName="Us_HomeAddress" />
+          <ScalarProperty Name="Us_WorkAddress" ColumnName="Us_WorkAddress" />
+          <ScalarProperty Name="Us_Email" ColumnName="Us_Email" />
+          <ScalarProperty Name="Us_Reg_Date" ColumnName="Us_Reg_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(NaghiEDM.Donator)">
+        <MappingFragment StoreEntitySet="UserSet_Donator">
+          <ScalarProperty Name="Us_ID" ColumnName="Us_ID" />
+          <ScalarProperty Name="Dr_HelpDay" ColumnName="Dr_HelpDay" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CountrySet">
+      <EntityTypeMapping TypeName="IsTypeOf(NaghiEDM.Country)">
+        <MappingFragment StoreEntitySet="CountrySet">
+          <ScalarProperty Name="Co_Id" ColumnName="Co_Id" />
+          <ScalarProperty Name="Co_Name" ColumnName="Co_Name" />
+          <ScalarProperty Name="Co_Latin" ColumnName="Co_Latin" />
+          <ScalarProperty Name="Co_Tel_Code" ColumnName="Co_Tel_Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CitySet">
+      <EntityTypeMapping TypeName="IsTypeOf(NaghiEDM.City)">
+        <MappingFragment StoreEntitySet="CitySet">
+          <ScalarProperty Name="Ct_Id" ColumnName="Ct_Id" />
+          <ScalarProperty Name="Ct_Name" ColumnName="Ct_Name" />
+          <ScalarProperty Name="Ct_Latin" ColumnName="Ct_Latin" />
+          <ScalarProperty Name="Ct_Tel_Code" ColumnName="Ct_Tel_Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContactTypeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(NaghiEDM.ContactType)">
+        <MappingFragment StoreEntitySet="ContactTypeSet">
+          <ScalarProperty Name="CT_Code" ColumnName="CT_Code" />
+          <ScalarProperty Name="CT_Name" ColumnName="CT_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DoneContactSet">
+      <EntityTypeMapping TypeName="IsTypeOf(NaghiEDM.DoneContact)">
+        <MappingFragment StoreEntitySet="DoneContactSet">
+          <ScalarProperty Name="DC_Id" ColumnName="DC_Id" />
+          <ScalarProperty Name="DC_Date" ColumnName="DC_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserGroupSet">
+      <EntityTypeMapping TypeName="IsTypeOf(NaghiEDM.UserGroup)">
+        <MappingFragment StoreEntitySet="UserGroupSet">
+          <ScalarProperty Name="Gr_Id" ColumnName="Gr_Id" />
+          <ScalarProperty Name="Gr_Name" ColumnName="Gr_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleSet">
+      <EntityTypeMapping TypeName="IsTypeOf(NaghiEDM.Role)">
+        <MappingFragment StoreEntitySet="RoleSet">
+          <ScalarProperty Name="Rol_Id" ColumnName="Rol_Id" />
+          <ScalarProperty Name="Ro_Name" ColumnName="Ro_Name" />
+          <ScalarProperty Name="Ro_Active" ColumnName="Ro_Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AssignedRoleSet">
+      <EntityTypeMapping TypeName="IsTypeOf(NaghiEDM.AssignedRole)">
+        <MappingFragment StoreEntitySet="AssignedRoleSet">
+          <ScalarProperty Name="As_Id" ColumnName="As_Id" />
+          <ScalarProperty Name="As_Active" ColumnName="As_Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LogSet">
+      <EntityTypeMapping TypeName="IsTypeOf(NaghiEDM.Log)">
+        <MappingFragment StoreEntitySet="LogSet">
+          <ScalarProperty Name="Lg_Id" ColumnName="Lg_Id" />
+          <ScalarProperty Name="Lg_Date" ColumnName="Lg_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GoodGroupSet">
+      <EntityTypeMapping TypeName="IsTypeOf(NaghiEDM.GoodGroup)">
+        <MappingFragment StoreEntitySet="GoodGroupSet">
+          <ScalarProperty Name="GG_Id" ColumnName="GG_Id" />
+          <ScalarProperty Name="GG_Name" ColumnName="GG_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GoodSet">
+      <EntityTypeMapping TypeName="IsTypeOf(NaghiEDM.Good)">
+        <MappingFragment StoreEntitySet="GoodSet">
+          <ScalarProperty Name="Gd_Id" ColumnName="Gd_Id" />
+          <ScalarProperty Name="Gd_Name" ColumnName="Gd_Name" />
+          <ScalarProperty Name="Gd_RequiredNo" ColumnName="Gd_RequiredNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DonateSet">
+      <EntityTypeMapping TypeName="IsTypeOf(NaghiEDM.Donate)">
+        <MappingFragment StoreEntitySet="DonateSet">
+          <ScalarProperty Name="Do_Id" ColumnName="Do_Id" />
+          <ScalarProperty Name="Do_Date" ColumnName="Do_Date" />
+          <ScalarProperty Name="Do_Type" ColumnName="Do_Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DonateRowSet">
+      <EntityTypeMapping TypeName="IsTypeOf(NaghiEDM.DonateRow)">
+        <MappingFragment StoreEntitySet="DonateRowSet">
+          <ScalarProperty Name="DR_Id" ColumnName="DR_Id" />
+          <ScalarProperty Name="DR_Amount" ColumnName="DR_Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentTypeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(NaghiEDM.PaymentType)">
+        <MappingFragment StoreEntitySet="PaymentTypeSet">
+          <ScalarProperty Name="PT_Id" ColumnName="PT_Id" />
+          <ScalarProperty Name="PT_Description" ColumnName="PT_Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InistituteSet">
+      <EntityTypeMapping TypeName="IsTypeOf(NaghiEDM.Inistitute)">
+        <MappingFragment StoreEntitySet="InistituteSet">
+          <ScalarProperty Name="In_Id" ColumnName="In_Id" />
+          <ScalarProperty Name="In_Name" ColumnName="In_Name" />
+          <ScalarProperty Name="In_BankCard" ColumnName="In_BankCard" />
+          <ScalarProperty Name="In_BankAccount" ColumnName="In_BankAccount" />
+          <ScalarProperty Name="In_Address" ColumnName="In_Address" />
+          <ScalarProperty Name="In_Mng_Mob" ColumnName="In_Mng_Mob" />
+          <ScalarProperty Name="In_Tel" ColumnName="In_Tel" />
+          <ScalarProperty Name="In_Fax" ColumnName="In_Fax" />
+          <ScalarProperty Name="In_Email" ColumnName="In_Email" />
+          <ScalarProperty Name="In_WbAddress" ColumnName="In_WbAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DailyPointsSet">
+      <EntityTypeMapping TypeName="IsTypeOf(NaghiEDM.DailyPoints)">
+        <MappingFragment StoreEntitySet="DailyPointsSet">
+          <ScalarProperty Name="DP_Id" ColumnName="DP_Id" />
+          <ScalarProperty Name="DP_Sayer" ColumnName="DP_Sayer" />
+          <ScalarProperty Name="DP_Point" ColumnName="DP_Point" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NewsSet">
+      <EntityTypeMapping TypeName="IsTypeOf(NaghiEDM.News)">
+        <MappingFragment StoreEntitySet="NewsSet">
+          <ScalarProperty Name="Nw_Id" ColumnName="Nw_Id" />
+          <ScalarProperty Name="Nw_Description" ColumnName="Nw_Description" />
+          <ScalarProperty Name="Nw_Title" ColumnName="Nw_Title" />
+          <ScalarProperty Name="Nw_Type" ColumnName="Nw_Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GallarySet">
+      <EntityTypeMapping TypeName="IsTypeOf(NaghiEDM.Gallary)">
+        <MappingFragment StoreEntitySet="GallarySet">
+          <ScalarProperty Name="Ga_Id" ColumnName="Ga_Id" />
+          <ScalarProperty Name="Ga_Title" ColumnName="Ga_Title" />
+          <ScalarProperty Name="Ga_Description" ColumnName="Ga_Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhotoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(NaghiEDM.Photo)">
+        <MappingFragment StoreEntitySet="PhotoSet">
+          <ScalarProperty Name="Ph_Id" ColumnName="Ph_Id" />
+          <ScalarProperty Name="Ph_Description" ColumnName="Ph_Description" />
+          <ScalarProperty Name="Ph_Title" ColumnName="Ph_Title" />
+          <ScalarProperty Name="Ph_Path" ColumnName="Ph_Address" />
+          <ScalarProperty Name="Ph_Showable" ColumnName="Ph_Showable" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StateSet">
+      <EntityTypeMapping TypeName="IsTypeOf(NaghiEDM.State)">
+        <MappingFragment StoreEntitySet="StateSet">
+          <ScalarProperty Name="St_Id" ColumnName="St_Id" />
+          <ScalarProperty Name="St_Name" ColumnName="St_Name" />
+          <ScalarProperty Name="St_Latin" ColumnName="St_Latin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CityUser" TypeName="NaghiEDM.CityUser" StoreEntitySet="UserSet">
+      <EndProperty Name="City">
+        <ScalarProperty Name="Ct_Id" ColumnName="City_Ct_Id" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="Us_ID" ColumnName="Us_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RelationTypeHelper" TypeName="NaghiEDM.RelationTypeHelper" StoreEntitySet="UserSet_Donator">
+      <EndProperty Name="RelationType">
+        <ScalarProperty Name="CT_Code" ColumnName="PreferReType_CT_Code" />
+      </EndProperty>
+      <EndProperty Name="Helper">
+        <ScalarProperty Name="Us_ID" ColumnName="Us_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ContactTypeDoneContact" TypeName="NaghiEDM.ContactTypeDoneContact" StoreEntitySet="DoneContactSet">
+      <EndProperty Name="ContactType">
+        <ScalarProperty Name="CT_Code" ColumnName="ContactType_CT_Code" />
+      </EndProperty>
+      <EndProperty Name="DoneContact">
+        <ScalarProperty Name="DC_Id" ColumnName="DC_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DonatorContact" TypeName="NaghiEDM.DonatorDoneContact" StoreEntitySet="DoneContactSet">
+      <EndProperty Name="Donator">
+        <ScalarProperty Name="Us_ID" ColumnName="Donator_Us_ID" />
+      </EndProperty>
+      <EndProperty Name="DoneContact">
+        <ScalarProperty Name="DC_Id" ColumnName="DC_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserGroupUser" TypeName="NaghiEDM.UserGroupUser" StoreEntitySet="UserSet">
+      <EndProperty Name="UserGroup">
+        <ScalarProperty Name="Gr_Id" ColumnName="UserGroup_Gr_Id" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="Us_ID" ColumnName="Us_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RoleAssignedRole" TypeName="NaghiEDM.RoleAssignedRole" StoreEntitySet="AssignedRoleSet">
+      <EndProperty Name="Role">
+        <ScalarProperty Name="Rol_Id" ColumnName="Role_Rol_Id" />
+      </EndProperty>
+      <EndProperty Name="AssignedRole">
+        <ScalarProperty Name="As_Id" ColumnName="As_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserLog" TypeName="NaghiEDM.UserLog" StoreEntitySet="LogSet">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Us_ID" ColumnName="User_Us_ID" />
+      </EndProperty>
+      <EndProperty Name="Log">
+        <ScalarProperty Name="Lg_Id" ColumnName="Lg_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RoleLog" TypeName="NaghiEDM.RoleLog" StoreEntitySet="LogSet">
+      <EndProperty Name="Role">
+        <ScalarProperty Name="Rol_Id" ColumnName="Role_Rol_Id" />
+      </EndProperty>
+      <EndProperty Name="Log">
+        <ScalarProperty Name="Lg_Id" ColumnName="Lg_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GoodGroupGood" TypeName="NaghiEDM.GoodGroupGood" StoreEntitySet="GoodSet">
+      <EndProperty Name="GoodGroup">
+        <ScalarProperty Name="GG_Id" ColumnName="GoodGroup_GG_Id" />
+      </EndProperty>
+      <EndProperty Name="Good">
+        <ScalarProperty Name="Gd_Id" ColumnName="Gd_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DonatorPayment" TypeName="NaghiEDM.DonatorPayment" StoreEntitySet="DonateSet">
+      <EndProperty Name="Donator">
+        <ScalarProperty Name="Us_ID" ColumnName="Donator_Us_ID" />
+      </EndProperty>
+      <EndProperty Name="Payment">
+        <ScalarProperty Name="Do_Id" ColumnName="Do_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DonateDonateRow" TypeName="NaghiEDM.DonateDonateRow" StoreEntitySet="DonateRowSet">
+      <EndProperty Name="Donate">
+        <ScalarProperty Name="Do_Id" ColumnName="Donate_Do_Id" />
+      </EndProperty>
+      <EndProperty Name="DonateRow">
+        <ScalarProperty Name="DR_Id" ColumnName="DR_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GoodHelp_Row" TypeName="NaghiEDM.GoodHelp_Row" StoreEntitySet="DonateRowSet">
+      <EndProperty Name="Good">
+        <ScalarProperty Name="Gd_Id" ColumnName="Good_Gd_Id" />
+      </EndProperty>
+      <EndProperty Name="Help_Row">
+        <ScalarProperty Name="DR_Id" ColumnName="DR_Id" />
+      </EndProperty>
+      <Condition ColumnName="Good_Gd_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PaymentTypeHelpRow" TypeName="NaghiEDM.PaymentTypeHelpRow" StoreEntitySet="DonateRowSet">
+      <EndProperty Name="PaymentType">
+        <ScalarProperty Name="PT_Id" ColumnName="PaymentType_PT_Id" />
+      </EndProperty>
+      <EndProperty Name="HelpRow">
+        <ScalarProperty Name="DR_Id" ColumnName="DR_Id" />
+      </EndProperty>
+      <Condition ColumnName="PaymentType_PT_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserGroupAssignedRole" TypeName="NaghiEDM.UserGroupAssignedRole" StoreEntitySet="AssignedRoleSet">
+      <EndProperty Name="UserGroup">
+        <ScalarProperty Name="Gr_Id" ColumnName="UserGroup_Gr_Id" />
+      </EndProperty>
+      <EndProperty Name="AssignedRole">
+        <ScalarProperty Name="As_Id" ColumnName="As_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserDailyPoints" TypeName="NaghiEDM.UserDailyPoints" StoreEntitySet="DailyPointsSet">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Us_ID" ColumnName="User_Us_ID" />
+      </EndProperty>
+      <EndProperty Name="DailyPoints">
+        <ScalarProperty Name="DP_Id" ColumnName="DP_Id" />
+      </EndProperty>
+      <Condition ColumnName="User_Us_ID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserNews" TypeName="NaghiEDM.UserNews" StoreEntitySet="NewsSet">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Us_ID" ColumnName="User_Us_ID" />
+      </EndProperty>
+      <EndProperty Name="News">
+        <ScalarProperty Name="Nw_Id" ColumnName="Nw_Id" />
+      </EndProperty>
+      <Condition ColumnName="User_Us_ID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GallaryPhoto" TypeName="NaghiEDM.GallaryPhoto" StoreEntitySet="PhotoSet">
+      <EndProperty Name="Gallary">
+        <ScalarProperty Name="Ga_Id" ColumnName="Gallary_Ga_Id" />
+      </EndProperty>
+      <EndProperty Name="Photo">
+        <ScalarProperty Name="Ph_Id" ColumnName="Ph_Id" />
+      </EndProperty>
+      <Condition ColumnName="Gallary_Ga_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="NewsPhoto" TypeName="NaghiEDM.NewsPhoto" StoreEntitySet="PhotoSet">
+      <EndProperty Name="News">
+        <ScalarProperty Name="Nw_Id" ColumnName="News_Nw_Id" />
+      </EndProperty>
+      <EndProperty Name="Photo">
+        <ScalarProperty Name="Ph_Id" ColumnName="Ph_Id" />
+      </EndProperty>
+      <Condition ColumnName="News_Nw_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CountryState" TypeName="NaghiEDM.CountryState" StoreEntitySet="StateSet">
+      <EndProperty Name="Country">
+        <ScalarProperty Name="Co_Id" ColumnName="Country_Co_Id" />
+      </EndProperty>
+      <EndProperty Name="State">
+        <ScalarProperty Name="St_Id" ColumnName="St_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="StateCity" TypeName="NaghiEDM.StateCity" StoreEntitySet="CitySet">
+      <EndProperty Name="State">
+        <ScalarProperty Name="St_Id" ColumnName="State_St_Id" />
+      </EndProperty>
+      <EndProperty Name="City">
+        <ScalarProperty Name="Ct_Id" ColumnName="Ct_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

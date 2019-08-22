@@ -1,0 +1,157 @@
+﻿<style type="text/css">
+    table {
+        margin: 4px;
+        border-collapse: collapse;
+        background: #fcec8f;
+        width: 400px;
+    }
+        table th {
+            background-color: #fdffc9;
+            font-weight: bold;
+            color: #808080;
+            border: 1px solid thick;
+            padding: 15px;
+            min-width: 50px;
+            text-align: center;
+        }
+        table td {
+            border: 1px solid thick;
+            padding: 15px;
+            min-width: 80px;
+            text-align: center;
+        }
+</style>
+
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#SendSMS").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "SendSMStoAll",
+                data: jQuery("#Form1").serialize(),
+                cache: false,
+                success: function (TheResult) {
+                    //if (TheResult == true) {
+                    //    alert(TheResult);
+                    alert(" ارسال پیامک به درستی انجام پذیرفت");
+                    //}
+                    //else
+                     //   alert(" خطا در ارسال پیامک");
+                },
+                error: function () {
+                    alert(" خطا در ارسال پیامک");
+                }
+            })
+        }),
+        $("#SendEmail").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "SendEmailtoAll",
+                data: jQuery("#Form1").serialize(),
+                cache: false,
+                success: function (result) {
+                    //if (TheResult == true) {
+                    //    alert(TheResult);
+                    alert(" ارسال ایمیل به درستی انجام پذیرفت");
+                    //}
+                   // else 
+                    //    alert("خطا در ارسال ایمیل");
+                },
+                error: function () {
+                    alert("خطا در ارسال ایمیل");
+                }
+            })
+        })
+    })
+</script>
+
+@model List<test1.Models.PeriodicPaymentModel>
+@{
+    ViewBag.Title = "لیست خیرین";
+    WebGrid grid = new WebGrid(Model, rowsPerPage: 5);
+}
+<h2>@ViewBag.Title</h2>
+<p>
+    می توانید از طریق این صفحه لیست خیرین را مشاهده نموده و نسبت به ارسال پیامک یادآوری و یا ایمیا اقدام نمایید
+</p>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    })
+</script>
+<center>
+    @*using (Html.BeginForm("UserGroupChange", "Manage", FormMethod.Post, new { lmd = Model }))
+    *@
+    <form id="Form1">
+        <table>
+            <tr>
+                @if (Model.Count > 0)
+                {
+                    <th>@Html.LabelFor(m => m[0].IsUser)</th>
+                    <th>@Html.LabelFor(m => m[0].Us_Name)</th>
+                    <th>@Html.LabelFor(m => m[0].Us_LName)</th>
+                    <th>@Html.LabelFor(m => m[0].Us_Email)</th>
+                    <th>@Html.LabelFor(m => m[0].Us_Mob)</th>
+                    <th>@Html.LabelFor(m => m[0].Us_Phone)</th>
+                    <th>@Html.LabelFor(m => m[0].Dr_Reg_Date)</th>
+                    <th>@Html.LabelFor(m => m[0].Dr_Month_Duration)</th>
+                    <th>@Html.LabelFor(m => m[0].Dr_Amount)</th>
+                    <th>@Html.LabelFor(m => m[0].SendSMS)</th>
+                    <th>@Html.LabelFor(m => m[0].SendEmail)</th>
+                }
+            </tr>
+
+            @for (var i = 0; i < Model.Count; ++i)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => m[i].IsUser)</td>
+                    <td>@Html.DisplayFor(m => m[i].Us_Name)</td>
+                    <td>@Html.DisplayFor(m => m[i].Us_LName)</td>
+                    <td>@Html.DisplayFor(m => m[i].Us_Email)</td>
+                    <td>@Html.DisplayFor(m => m[i].Us_Mob)</td>
+                    <td>@Html.DisplayFor(m => m[i].Us_Phone)</td>
+                    <td>@Html.DisplayFor(m => m[i].Dr_Reg_Date)</td>
+                    <td>@Html.DisplayFor(m => m[i].Dr_Month_Duration)</td>
+                    <td>@Html.DisplayFor(m => m[i].Dr_Amount)</td>
+                    @if (Model[i].Us_Mob != "" && Model[i].Dr_CT_Code == 1)
+                    {
+                        <td>@Html.CheckBoxFor(m => m[i].SendSMS)</td>
+                    }
+                    else
+                    {
+                        <td>@Html.CheckBoxFor(m => m[i].SendSMS, new { @disabled = true, @checked = false })</td>
+                    }
+                    @if (Model[i].Us_Email != "" && Model[i].Dr_CT_Code == 0)
+                    {
+                        <td>@Html.CheckBoxFor(m => m[i].SendEmail)</td>
+                    }
+                    else
+                    {
+                        <td>@Html.CheckBoxFor(m => m[i].SendEmail, new { @disabled = true, @checked = false })</td>
+                    }
+                </tr>
+                @Html.HiddenFor(m => m[i].Us_Name)
+                @Html.HiddenFor(m => m[i].Us_LName)
+                @Html.HiddenFor(m => m[i].Us_Email)
+                @Html.HiddenFor(m => m[i].Us_Unic_Number)
+            }
+        </table>
+        <br />
+        <div class="btn btn-default">
+            @if (Model.Count > 0)
+            {
+                <input type="button" value="ارسال پیامک" id="SendSMS" />
+                <input type="button" value="ارسال ایمیل" id="SendEmail" />
+            }
+            else
+            {
+                <input type="button" value="ارسال پیامک" disabled/>
+                <input type="button" value="ارسال ایمیل" disabled/>
+            }
+        </div>
+    </form>
+    <br />
+</center>
+

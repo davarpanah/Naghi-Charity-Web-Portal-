@@ -1,0 +1,128 @@
+﻿<style type="text/css">
+    .drow {
+        display: table-row;
+        min-width: 300px;
+    }
+
+    td {
+        min-width: 100px;
+        text-align: right;
+    }
+
+    .MyCol {
+        min-width: 50px;
+        text-align: right;
+        font-weight: bold;
+    }
+
+    #oblock {
+        direction: rtl;
+        background: #ffd800;
+        padding: 25px;
+        padding-bottom: 25px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 800px;
+        text-align: right; 
+    }
+        #oblock2 {
+        direction: rtl;
+        background: #fdffc9;
+        padding: 25px;
+        padding-bottom: 25px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 800px;
+        text-align: right; 
+    }
+</style>
+
+@model test1.Models.PatientListModel
+@{
+    ViewBag.Title = "لیست مددجویان";
+}
+<h2>@ViewBag.Title</h2>
+
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#SeletedSupporter").change(function () {
+            $("#SearchForm").submit();
+        }),
+        $("#SeletedSeyed").change(function () {
+            $("#SearchForm").submit();
+        })
+    })
+</script>
+<center>
+    <table id="oblock">
+        @using (Html.BeginForm("PatientList", "Home", FormMethod.Get, new { SeletedSupporter = Model.SeletedSupporter, SeletedSeyed = Model.SeletedSeyed, @id = "SearchForm" }))
+        {
+            <tr id="Row1" class="form-group">
+                <td class="col-xs-6 form-group">
+                    @Html.LabelFor(m => m.Seyyeds)
+                    @Html.DropDownListFor(m => m.SeletedSeyed, new SelectList(Model.Seyyeds, "Key", "Value"), new { @id = "SeletedSeyed" })
+                </td>
+                <td class="col-xs-6 form-group">
+                    @Html.LabelFor(m => m.Supporters)
+                    @Html.DropDownListFor(m => m.SeletedSupporter, new SelectList(Model.Supporters, "Key", "Value"), new { @id = "SeletedSupporter" })
+                </td>
+            </tr>
+        }
+    </table>
+    <table id="oblock2">
+        @foreach (var item in Model.Patients)
+        {
+            <tr class="form-group">
+                <td class="col-xs-6 form-group">
+                    @Html.LabelFor(m => item.Pt_Id, new { @class = "MyCol" })
+                    @Html.DisplayFor(m => item.Pt_Id)
+                </td>
+                <td class="col-xs-6 form-group" style="text-align: left;">
+                    <img src="@Url.Content(item.Pt_Photo_Path)" width="60" height="75" />
+                </td>
+            </tr>
+            <tr class="form-group">
+                <td class="col-xs-6 form-group">
+                    @Html.LabelFor(m => item.Pt_CompleteName, new { @class = "MyCol" })
+                    @Html.DisplayFor(m => item.Pt_CompleteName)
+                </td>
+                <td class="col-xs-6 form-group">
+                    @Html.LabelFor(m => item.Pt_BirthDay, new { @class = "MyCol" })
+                    @Html.DisplayFor(m => item.Pt_BirthDay)
+                </td>
+            </tr>
+            <tr class="form-group">
+                <td class="col-xs-6 form-group">
+                    @Html.LabelFor(m => item.Pt_Seyyed, new { @class = "MyCol" })
+                    @Html.DisplayFor(m => Model.Seyyeds[item.Pt_Seyyed])
+                </td>
+                <td class="col-xs-6 form-group">
+                    @Html.LabelFor(m => item.Pt_Supporter, new { @class = "MyCol" })
+                    @Html.DisplayFor(m => Model.Supporters[item.Pt_Supporter])
+                </td>
+            </tr>
+            <tr class="form-group">
+                <td class="col-xs-6 form-group">
+                    @Html.LabelFor(m => item.Pt_Sex, new { @class = "MyCol" })
+                    @Html.DisplayFor(m => Model.Sexes[item.Pt_Sex])
+                </td>
+                <td class="col-xs-6 form-group">
+                    @Html.LabelFor(m => item.Pt_Ct_Code, new { @class = "MyCol" })
+                    @Html.DropDownListFor(m => item.Pt_Ct_Code, new SelectList(item.Cities, "value", "text", item.Pt_Ct_Code), new { disabled = "true" })
+                </td>
+            </tr>
+            <tr>
+                <td><hr /></td>
+                <td><hr /></td>
+            </tr>
+        }
+    </table>
+    <br/>
+</center>
+
+

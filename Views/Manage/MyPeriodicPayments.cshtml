@@ -1,0 +1,68 @@
+﻿
+<style type="text/css">
+    .table {
+        margin: 4px;
+        border-collapse: collapse;
+        background: #fcec8f;
+        width: 400px;
+    }
+    .header {
+        background-color: #fdffc9;
+        font-weight: bold;
+        color: #ff0000;
+        align-items: center;
+        align-content: center;
+    }
+    .table th, .table td {
+        border: 1px solid thick;
+        padding: 15px;
+        min-width: 50px;
+    }
+</style>
+
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+@model List<test1.Models.PeriodicPaymentModel>
+@{
+    ViewBag.Title = "تعهدات دوره ای من";
+    WebGrid grid = new WebGrid(Model, rowsPerPage: 5);
+}
+<h2>@ViewBag.Title</h2>
+<p>
+    حامی گرامی ضمن تشکر از حمایت جنابعالی تا این لحظه درخواستهای پرداخت دوره ای زیر در سیستم ثبت شده است
+</p>
+<center>
+    @grid.GetHtml(
+        tableStyle: "table", // applying style on grid
+        fillEmptyRows: true,
+            //show empty row when there is only one record on page to it will display all empty rows there.
+        headerStyle: "header", //applying style.
+        footerStyle: "grid-footer", //applying style.
+        mode: WebGridPagerModes.All, //paging to grid
+        firstText: "<< First",
+        previousText: "< Prev",
+        nextText: "Next >",
+        lastText: "Last >>",
+        columns: new[] // colums in grid
+        {       
+            grid.Column("Dr_Id","شماره تعهد"),//ToInt32(dr["Dr_Id"]),
+            grid.Column("Us_Name","نام"),// = dr["Us_Name"].ToString(),
+            grid.Column("Us_LName","نام خانوادگی"),// = dr["Us_LName"].ToString(),
+            grid.Column("Dr_Reg_Date","تاریخ ثبت"),// = Convert.ToDateTime(dr["Dr_Reg_Date"]),
+            grid.Column("Dr_Month_Duration","هر چند ماه"),// = Convert.ToInt16(dr["Dr_Month_Duration"]),
+            grid.Column("Dr_Amount","مبلغ تعهدی"),//=Convert.ToInt32(dr["Dr_Amount"]),
+            grid.Column("Dr_AccTransaction","واریز به حساب"),// = Convert.ToBoolean(dr["Dr_AccTransaction"]),
+            grid.Column("Dr_CardTranscation","واریز به کارت"),// = Convert.ToBoolean(dr["Dr_CardTranscation"]),
+            grid.Column("Dr_Inperson","مراجعه حضوری به دفتر"),// = Convert.ToBoolean(dr["Dr_Inperson"]),
+            grid.Column("Dr_Representative","تحویل درب منزل"),// = Convert.ToBoolean(dr["Dr_Representative"]),
+            grid.Column("Dr_Cleaner","تهیه مواد شوینده و بهداشتی"),// = Convert.ToBoolean(dr["Dr_Cleaner"]),
+            grid.Column("Dr_Clothes","تهیه پوشاک"),// = Convert.ToBoolean(dr["Dr_Clothes"]),
+            grid.Column("Dr_Endowment","وقف اموال"),// = Convert.ToBoolean(dr["Dr_Endowment"]),
+            grid.Column("Dr_Food","تهیه مواد غذایی"),// = Convert.ToBoolean(dr["Dr_Food"]),
+            //grid.Column("Dr_HelpDay",""),// = Convert.ToInt16(dr["Dr_HelpDay"]),
+            grid.Column("Dr_Medical","تهیه دارو و لوازم پزشکی"),// = Convert.ToBoolean(dr["Dr_Medical"]),
+            grid.Column("Dr_Stationery","تهیه لوازم التحریر")// = Convert.ToBoolean(dr["Dr_Stationery"])
+         }
+       )
+    <br />
+</center>

@@ -1,0 +1,573 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NaghiEDM.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="NaghiEDMStoreContainer">
+    <EntitySet Name="UserSet" EntityType="NaghiEDM.Store.UserSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CountrySet" EntityType="NaghiEDM.Store.CountrySet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CitySet" EntityType="NaghiEDM.Store.CitySet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ContactTypeSet" EntityType="NaghiEDM.Store.ContactTypeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DoneContactSet" EntityType="NaghiEDM.Store.DoneContactSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserGroupSet" EntityType="NaghiEDM.Store.UserGroupSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RoleSet" EntityType="NaghiEDM.Store.RoleSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AssignedRoleSet" EntityType="NaghiEDM.Store.AssignedRoleSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LogSet" EntityType="NaghiEDM.Store.LogSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GoodGroupSet" EntityType="NaghiEDM.Store.GoodGroupSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GoodSet" EntityType="NaghiEDM.Store.GoodSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DonateSet" EntityType="NaghiEDM.Store.DonateSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DonateRowSet" EntityType="NaghiEDM.Store.DonateRowSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PaymentTypeSet" EntityType="NaghiEDM.Store.PaymentTypeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="InistituteSet" EntityType="NaghiEDM.Store.InistituteSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DailyPointsSet" EntityType="NaghiEDM.Store.DailyPointsSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NewsSet" EntityType="NaghiEDM.Store.NewsSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GallarySet" EntityType="NaghiEDM.Store.GallarySet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PhotoSet" EntityType="NaghiEDM.Store.PhotoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StateSet" EntityType="NaghiEDM.Store.StateSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserSet_Donator" EntityType="NaghiEDM.Store.UserSet_Donator" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="CityUser" Association="NaghiEDM.Store.CityUser">
+      <End Role="City" EntitySet="CitySet" />
+      <End Role="User" EntitySet="UserSet" />
+    </AssociationSet>
+    <AssociationSet Name="RelationTypeHelper" Association="NaghiEDM.Store.RelationTypeHelper">
+      <End Role="RelationType" EntitySet="ContactTypeSet" />
+      <End Role="Helper" EntitySet="UserSet_Donator" />
+    </AssociationSet>
+    <AssociationSet Name="ContactTypeDoneContact" Association="NaghiEDM.Store.ContactTypeDoneContact">
+      <End Role="ContactType" EntitySet="ContactTypeSet" />
+      <End Role="DoneContact" EntitySet="DoneContactSet" />
+    </AssociationSet>
+    <AssociationSet Name="DonatorContact" Association="NaghiEDM.Store.DonatorDoneContact">
+      <End Role="Donator" EntitySet="UserSet_Donator" />
+      <End Role="DoneContact" EntitySet="DoneContactSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserGroupUser" Association="NaghiEDM.Store.UserGroupUser">
+      <End Role="UserGroup" EntitySet="UserGroupSet" />
+      <End Role="User" EntitySet="UserSet" />
+    </AssociationSet>
+    <AssociationSet Name="RoleAssignedRole" Association="NaghiEDM.Store.RoleAssignedRole">
+      <End Role="Role" EntitySet="RoleSet" />
+      <End Role="AssignedRole" EntitySet="AssignedRoleSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserLog" Association="NaghiEDM.Store.UserLog">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Log" EntitySet="LogSet" />
+    </AssociationSet>
+    <AssociationSet Name="RoleLog" Association="NaghiEDM.Store.RoleLog">
+      <End Role="Role" EntitySet="RoleSet" />
+      <End Role="Log" EntitySet="LogSet" />
+    </AssociationSet>
+    <AssociationSet Name="GoodGroupGood" Association="NaghiEDM.Store.GoodGroupGood">
+      <End Role="GoodGroup" EntitySet="GoodGroupSet" />
+      <End Role="Good" EntitySet="GoodSet" />
+    </AssociationSet>
+    <AssociationSet Name="DonatorPayment" Association="NaghiEDM.Store.DonatorPayment">
+      <End Role="Donator" EntitySet="UserSet_Donator" />
+      <End Role="Payment" EntitySet="DonateSet" />
+    </AssociationSet>
+    <AssociationSet Name="DonateDonateRow" Association="NaghiEDM.Store.DonateDonateRow">
+      <End Role="Donate" EntitySet="DonateSet" />
+      <End Role="DonateRow" EntitySet="DonateRowSet" />
+    </AssociationSet>
+    <AssociationSet Name="GoodHelp_Row" Association="NaghiEDM.Store.GoodHelp_Row">
+      <End Role="Good" EntitySet="GoodSet" />
+      <End Role="Help_Row" EntitySet="DonateRowSet" />
+    </AssociationSet>
+    <AssociationSet Name="PaymentTypeHelpRow" Association="NaghiEDM.Store.PaymentTypeHelpRow">
+      <End Role="PaymentType" EntitySet="PaymentTypeSet" />
+      <End Role="HelpRow" EntitySet="DonateRowSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserGroupAssignedRole" Association="NaghiEDM.Store.UserGroupAssignedRole">
+      <End Role="UserGroup" EntitySet="UserGroupSet" />
+      <End Role="AssignedRole" EntitySet="AssignedRoleSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserDailyPoints" Association="NaghiEDM.Store.UserDailyPoints">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="DailyPoints" EntitySet="DailyPointsSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserNews" Association="NaghiEDM.Store.UserNews">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="News" EntitySet="NewsSet" />
+    </AssociationSet>
+    <AssociationSet Name="GallaryPhoto" Association="NaghiEDM.Store.GallaryPhoto">
+      <End Role="Gallary" EntitySet="GallarySet" />
+      <End Role="Photo" EntitySet="PhotoSet" />
+    </AssociationSet>
+    <AssociationSet Name="NewsPhoto" Association="NaghiEDM.Store.NewsPhoto">
+      <End Role="News" EntitySet="NewsSet" />
+      <End Role="Photo" EntitySet="PhotoSet" />
+    </AssociationSet>
+    <AssociationSet Name="CountryState" Association="NaghiEDM.Store.CountryState">
+      <End Role="Country" EntitySet="CountrySet" />
+      <End Role="State" EntitySet="StateSet" />
+    </AssociationSet>
+    <AssociationSet Name="StateCity" Association="NaghiEDM.Store.StateCity">
+      <End Role="State" EntitySet="StateSet" />
+      <End Role="City" EntitySet="CitySet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Donator_inherits_User" Association="NaghiEDM.Store.FK_Donator_inherits_User">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Donator" EntitySet="UserSet_Donator" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="UserSet">
+    <Key>
+      <PropertyRef Name="Us_ID" />
+    </Key>
+    <Property Name="Us_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Us_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Us_LName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Us_Active" Type="bit" Nullable="false" />
+    <Property Name="Us_BirthDay" Type="datetime" Nullable="true" />
+    <Property Name="Us_Phone" Type="bigint" Nullable="true" />
+    <Property Name="Us_Mob" Type="bigint" Nullable="true" />
+    <Property Name="Us_HomeAddress" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Us_WorkAddress" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Us_Email" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Us_Reg_Date" Type="datetime" Nullable="false" />
+    <Property Name="City_Ct_Id" Type="smallint" Nullable="false" />
+    <Property Name="UserGroup_Gr_Id" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CountrySet">
+    <Key>
+      <PropertyRef Name="Co_Id" />
+    </Key>
+    <Property Name="Co_Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Co_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Co_Latin" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Co_Tel_Code" Type="tinyint" Nullable="true" />
+  </EntityType>
+  <EntityType Name="CitySet">
+    <Key>
+      <PropertyRef Name="Ct_Id" />
+    </Key>
+    <Property Name="Ct_Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ct_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ct_Latin" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Ct_Tel_Code" Type="tinyint" Nullable="true" />
+    <Property Name="State_St_Id" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ContactTypeSet">
+    <Key>
+      <PropertyRef Name="CT_Code" />
+    </Key>
+    <Property Name="CT_Code" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CT_Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DoneContactSet">
+    <Key>
+      <PropertyRef Name="DC_Id" />
+    </Key>
+    <Property Name="DC_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DC_Date" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ContactType_CT_Code" Type="tinyint" Nullable="false" />
+    <Property Name="Donator_Us_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserGroupSet">
+    <Key>
+      <PropertyRef Name="Gr_Id" />
+    </Key>
+    <Property Name="Gr_Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Gr_Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RoleSet">
+    <Key>
+      <PropertyRef Name="Rol_Id" />
+    </Key>
+    <Property Name="Rol_Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ro_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ro_Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AssignedRoleSet">
+    <Key>
+      <PropertyRef Name="As_Id" />
+    </Key>
+    <Property Name="As_Active" Type="bit" Nullable="false" />
+    <Property Name="As_Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Role_Rol_Id" Type="tinyint" Nullable="false" />
+    <Property Name="UserGroup_Gr_Id" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LogSet">
+    <Key>
+      <PropertyRef Name="Lg_Id" />
+    </Key>
+    <Property Name="Lg_Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Lg_Date" Type="datetime" Nullable="false" />
+    <Property Name="User_Us_ID" Type="int" Nullable="false" />
+    <Property Name="Role_Rol_Id" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GoodGroupSet">
+    <Key>
+      <PropertyRef Name="GG_Id" />
+    </Key>
+    <Property Name="GG_Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GG_Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GoodSet">
+    <Key>
+      <PropertyRef Name="Gd_Id" />
+    </Key>
+    <Property Name="Gd_Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Gd_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Gd_RequiredNo" Type="smallint" Nullable="false" />
+    <Property Name="GoodGroup_GG_Id" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DonateSet">
+    <Key>
+      <PropertyRef Name="Do_Id" />
+    </Key>
+    <Property Name="Do_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Do_Date" Type="datetime" Nullable="false" />
+    <Property Name="Do_Type" Type="tinyint" Nullable="false" />
+    <Property Name="Donator_Us_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DonateRowSet">
+    <Key>
+      <PropertyRef Name="DR_Id" />
+    </Key>
+    <Property Name="DR_Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DR_Amount" Type="smallint" Nullable="false" />
+    <Property Name="Donate_Do_Id" Type="int" Nullable="false" />
+    <Property Name="Good_Gd_Id" Type="smallint" Nullable="true" />
+    <Property Name="PaymentType_PT_Id" Type="tinyint" Nullable="true" />
+  </EntityType>
+  <EntityType Name="PaymentTypeSet">
+    <Key>
+      <PropertyRef Name="PT_Id" />
+    </Key>
+    <Property Name="PT_Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PT_Description" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InistituteSet">
+    <Key>
+      <PropertyRef Name="In_Id" />
+    </Key>
+    <Property Name="In_Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="In_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="In_BankCard" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="In_BankAccount" Type="bigint" Nullable="true" />
+    <Property Name="In_Address" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="In_Mng_Mob" Type="bigint" Nullable="true" />
+    <Property Name="In_Tel" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="In_Fax" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="In_Email" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="In_WbAddress" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="DailyPointsSet">
+    <Key>
+      <PropertyRef Name="DP_Id" />
+    </Key>
+    <Property Name="DP_Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DP_Sayer" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DP_Point" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="User_Us_ID" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="NewsSet">
+    <Key>
+      <PropertyRef Name="Nw_Id" />
+    </Key>
+    <Property Name="Nw_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nw_Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Nw_Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Nw_Type" Type="tinyint" Nullable="false" />
+    <Property Name="User_Us_ID" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="GallarySet">
+    <Key>
+      <PropertyRef Name="Ga_Id" />
+    </Key>
+    <Property Name="Ga_Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ga_Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ga_Description" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PhotoSet">
+    <Key>
+      <PropertyRef Name="Ph_Id" />
+    </Key>
+    <Property Name="Ph_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ph_Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ph_Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ph_Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ph_Showable" Type="bit" Nullable="false" />
+    <Property Name="Gallary_Ga_Id" Type="tinyint" Nullable="true" />
+    <Property Name="News_Nw_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="StateSet">
+    <Key>
+      <PropertyRef Name="St_Id" />
+    </Key>
+    <Property Name="St_Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="St_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="St_Latin" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Country_Co_Id" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserSet_Donator">
+    <Key>
+      <PropertyRef Name="Us_ID" />
+    </Key>
+    <Property Name="Dr_HelpDay" Type="tinyint" Nullable="false" />
+    <Property Name="Us_ID" Type="int" Nullable="false" />
+    <Property Name="PreferReType_CT_Code" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <Association Name="CityUser">
+    <End Role="City" Type="NaghiEDM.Store.CitySet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="User" Type="NaghiEDM.Store.UserSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Ct_Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="City_Ct_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RelationTypeHelper">
+    <End Role="RelationType" Type="NaghiEDM.Store.ContactTypeSet" Multiplicity="1" />
+    <End Role="Helper" Type="NaghiEDM.Store.UserSet_Donator" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RelationType">
+        <PropertyRef Name="CT_Code" />
+      </Principal>
+      <Dependent Role="Helper">
+        <PropertyRef Name="PreferReType_CT_Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ContactTypeDoneContact">
+    <End Role="ContactType" Type="NaghiEDM.Store.ContactTypeSet" Multiplicity="1" />
+    <End Role="DoneContact" Type="NaghiEDM.Store.DoneContactSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ContactType">
+        <PropertyRef Name="CT_Code" />
+      </Principal>
+      <Dependent Role="DoneContact">
+        <PropertyRef Name="ContactType_CT_Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DonatorDoneContact">
+    <End Role="Donator" Type="NaghiEDM.Store.UserSet_Donator" Multiplicity="1" />
+    <End Role="DoneContact" Type="NaghiEDM.Store.DoneContactSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Donator">
+        <PropertyRef Name="Us_ID" />
+      </Principal>
+      <Dependent Role="DoneContact">
+        <PropertyRef Name="Donator_Us_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserGroupUser">
+    <End Role="UserGroup" Type="NaghiEDM.Store.UserGroupSet" Multiplicity="1" />
+    <End Role="User" Type="NaghiEDM.Store.UserSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserGroup">
+        <PropertyRef Name="Gr_Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="UserGroup_Gr_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RoleAssignedRole">
+    <End Role="Role" Type="NaghiEDM.Store.RoleSet" Multiplicity="1" />
+    <End Role="AssignedRole" Type="NaghiEDM.Store.AssignedRoleSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Rol_Id" />
+      </Principal>
+      <Dependent Role="AssignedRole">
+        <PropertyRef Name="Role_Rol_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserLog">
+    <End Role="User" Type="NaghiEDM.Store.UserSet" Multiplicity="1" />
+    <End Role="Log" Type="NaghiEDM.Store.LogSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Us_ID" />
+      </Principal>
+      <Dependent Role="Log">
+        <PropertyRef Name="User_Us_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RoleLog">
+    <End Role="Role" Type="NaghiEDM.Store.RoleSet" Multiplicity="1" />
+    <End Role="Log" Type="NaghiEDM.Store.LogSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Rol_Id" />
+      </Principal>
+      <Dependent Role="Log">
+        <PropertyRef Name="Role_Rol_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GoodGroupGood">
+    <End Role="GoodGroup" Type="NaghiEDM.Store.GoodGroupSet" Multiplicity="1" />
+    <End Role="Good" Type="NaghiEDM.Store.GoodSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GoodGroup">
+        <PropertyRef Name="GG_Id" />
+      </Principal>
+      <Dependent Role="Good">
+        <PropertyRef Name="GoodGroup_GG_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DonatorPayment">
+    <End Role="Donator" Type="NaghiEDM.Store.UserSet_Donator" Multiplicity="1" />
+    <End Role="Payment" Type="NaghiEDM.Store.DonateSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Donator">
+        <PropertyRef Name="Us_ID" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="Donator_Us_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DonateDonateRow">
+    <End Role="Donate" Type="NaghiEDM.Store.DonateSet" Multiplicity="1" />
+    <End Role="DonateRow" Type="NaghiEDM.Store.DonateRowSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Donate">
+        <PropertyRef Name="Do_Id" />
+      </Principal>
+      <Dependent Role="DonateRow">
+        <PropertyRef Name="Donate_Do_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GoodHelp_Row">
+    <End Role="Good" Type="NaghiEDM.Store.GoodSet" Multiplicity="0..1" />
+    <End Role="Help_Row" Type="NaghiEDM.Store.DonateRowSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Good">
+        <PropertyRef Name="Gd_Id" />
+      </Principal>
+      <Dependent Role="Help_Row">
+        <PropertyRef Name="Good_Gd_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PaymentTypeHelpRow">
+    <End Role="PaymentType" Type="NaghiEDM.Store.PaymentTypeSet" Multiplicity="0..1" />
+    <End Role="HelpRow" Type="NaghiEDM.Store.DonateRowSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentType">
+        <PropertyRef Name="PT_Id" />
+      </Principal>
+      <Dependent Role="HelpRow">
+        <PropertyRef Name="PaymentType_PT_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserGroupAssignedRole">
+    <End Role="UserGroup" Type="NaghiEDM.Store.UserGroupSet" Multiplicity="1" />
+    <End Role="AssignedRole" Type="NaghiEDM.Store.AssignedRoleSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserGroup">
+        <PropertyRef Name="Gr_Id" />
+      </Principal>
+      <Dependent Role="AssignedRole">
+        <PropertyRef Name="UserGroup_Gr_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserDailyPoints">
+    <End Role="User" Type="NaghiEDM.Store.UserSet" Multiplicity="0..1" />
+    <End Role="DailyPoints" Type="NaghiEDM.Store.DailyPointsSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Us_ID" />
+      </Principal>
+      <Dependent Role="DailyPoints">
+        <PropertyRef Name="User_Us_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserNews">
+    <End Role="User" Type="NaghiEDM.Store.UserSet" Multiplicity="0..1" />
+    <End Role="News" Type="NaghiEDM.Store.NewsSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Us_ID" />
+      </Principal>
+      <Dependent Role="News">
+        <PropertyRef Name="User_Us_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GallaryPhoto">
+    <End Role="Gallary" Type="NaghiEDM.Store.GallarySet" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Photo" Type="NaghiEDM.Store.PhotoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gallary">
+        <PropertyRef Name="Ga_Id" />
+      </Principal>
+      <Dependent Role="Photo">
+        <PropertyRef Name="Gallary_Ga_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NewsPhoto">
+    <End Role="News" Type="NaghiEDM.Store.NewsSet" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Photo" Type="NaghiEDM.Store.PhotoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="News">
+        <PropertyRef Name="Nw_Id" />
+      </Principal>
+      <Dependent Role="Photo">
+        <PropertyRef Name="News_Nw_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CountryState">
+    <End Role="Country" Type="NaghiEDM.Store.CountrySet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="State" Type="NaghiEDM.Store.StateSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Co_Id" />
+      </Principal>
+      <Dependent Role="State">
+        <PropertyRef Name="Country_Co_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StateCity">
+    <End Role="State" Type="NaghiEDM.Store.StateSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="City" Type="NaghiEDM.Store.CitySet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="St_Id" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="State_St_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Donator_inherits_User">
+    <End Role="User" Type="NaghiEDM.Store.UserSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Donator" Type="NaghiEDM.Store.UserSet_Donator" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Us_ID" />
+      </Principal>
+      <Dependent Role="Donator">
+        <PropertyRef Name="Us_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - موسسه معلولین امام جواد </title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+  
+   <style>
+			
+        *{
+			font-family:'Yekan';
+		}
+        h4{
+            font-family:'Yekan';
+        }
+        .MyForm {
+            background: #fdffc9;
+            text-align: right;
+            padding: 25px;        
+            padding-bottom: 20px; 
+        }
+        body {
+            direction: rtl;
+        }
+
+        h2 {
+            font-family:'BTitr';
+            text-align: center;
+        }
+
+        p {
+            font-size: medium;
+        }
+        #nav ul {
+            display: none;
+        }
+
+        #nav li:hover > ul {
+            display: block;
+        }
+        footer {
+            direction: rtl;
+            text-align: center;
+            height: 20px;    
+        }
+        a img{width:155px; height: 100px;}
+    </style>
+
+</head>
+<body>
+    <!-- navbar-inverse-->
+
+	    <div class="navbar navbar-fixed-top">
+        <div class="navbar-collapse collapse navbar-right">
+            <ul id="nav" class="nav navbar-nav" style="font-weight:bold; background-color: #ffffff; text-align:right">
+              <li>@Html.ActionLink(" ارتباط با موسسه ", "Contact", "Home")</li>
+                <li>
+                    @Html.ActionLink(" تازه های موسسه ", "Index", "Home")
+                    <ul>
+                        <li>@Html.ActionLink(" اخبار موسسه ", "News", "Home", new { SelectedNews = 0, Nw_Type = 0 }, null)</li>
+                        <li>@Html.ActionLink(" همایشها و رویدادها ", "News", "Home", new { SelectedNews = 0, Nw_Type = 1 }, null)</li>
+                    </ul>
+                </li>
+                <li>
+                    @Html.ActionLink(" دانستنیها ", "Index", "Home")
+                    <ul>
+                        <li>@Html.ActionLink(" علل معلولیتها ", "DisabilitiesCauses", "Home")</li>
+                        <li>@Html.ActionLink(" پیشگیری از معلولیتها ", "Prevention", "Home")</li>
+                        <li>@Html.ActionLink(" مراقبت از معلولین ", "Takingcare", "Home")</li>
+                        <li>@Html.ActionLink(" روانشناسی و آموزش ", "Psychology", "Home")</li>
+                    </ul>
+                </li>
+                <li>
+                    @Html.ActionLink(" مددجویان ", "Index", "Home")
+                    <ul>
+                        <li>@Html.ActionLink(" مددجویان بدون سرپرست ", "PatientList", "Home", new { SeletedSupporter = 1, SeletedSeyed = 0 }, null)</li>
+                        <li>@Html.ActionLink(" مددجویان با سرپرست ", "PatientList", "Home", new { SeletedSupporter = 2, SeletedSeyed = 0 }, null)</li>
+                        <li>@Html.ActionLink(" مددجویان بد سرپرست ", "PatientList", "Home", new { SeletedSupporter = 3, SeletedSeyed = 0 }, null)</li>
+                        <li>@Html.ActionLink(" مددجویان سید ", "PatientList", "Home", new { SeletedSupporter = 0, SeletedSeyed = 1 }, null)</li>
+                        <li>@Html.ActionLink(" مددجویان عام ", "PatientList", "Home", new { SeletedSupporter = 0, SeletedSeyed = 2 }, null)</li>
+                    </ul>
+                </li>
+                <li>
+                    @Html.ActionLink(" کمک های مردمی ", "Index", "Home")
+                    <ul>
+                        <li>@Html.ActionLink(" لیست نیازها ", "WishList", "Home")</li>
+                        <li>@Html.ActionLink(" درخواست صندوق صدقات ", "CharityFundRequest", "Home")</li>
+                        <li>@Html.ActionLink(" پرداخت آنلاین ", "OnlinePayment", "Home")</li>
+                        <li>@Html.ActionLink(" پرداخت دوره ای ", "PeriodicPayment", "Home")</li>
+                        <li>@Html.ActionLink(" تابلو تسلیت ", "CndolenceTable", "Home")</li>
+                        <li>@Html.ActionLink(" همکاری در ساخت ", "ConstructionCooperation", "Home")</li>
+                        <li>@Html.ActionLink(" اعلان همکاری ", "Cooperation", "Home")</li>
+                        <li>@Html.ActionLink(" درخواست بازدید ", "VisitRequest", "Home")</li>
+                    </ul>
+                </li>
+                <li>
+                    @Html.ActionLink(" خدمات موسسه", "Index", "Home")
+                    <ul>
+                        <li>@Html.ActionLink(" پزشکی ", "MedicalServices", "Home")</li>
+                        <li>@Html.ActionLink(" حمایتی ", "SupportiveServices", "Home")</li>
+                        <li>@Html.ActionLink(" توانبخشی ", "RehabilitationServices", "Home")</li>
+                    </ul>
+                </li>
+                <li>
+                    @Html.ActionLink(" درباره موسسه امام جواد", "Index", "Home")
+                    <ul>
+                        <li>@Html.ActionLink(" چشم انداز ", "Goal", "Home")</li>
+                        <li>@Html.ActionLink(" تاریخچه ", "History", "Home")</li>
+                        <li>@Html.ActionLink(" چارت سازمانی ", "Chart", "Home")</li>
+                        <li>@Html.ActionLink(" هیات مدیره ", "Directors", "Home")</li>
+                        <li>@Html.ActionLink(" پیام مدیریت ", "ManagerMessage", "Home")</li>
+                        <li>@Html.ActionLink(" حامیان موسسه ", "Supporters", "Home")</li>
+                    </ul>
+                </li>
+                <li>@Html.ActionLink(" خانه ", "Index", "Home")</li>
+				</div>
+        @Html.Partial("_LoginPartial")
+			</div>
+
+
+    <div class="container body-content">
+        @RenderBody()
+        
+        <div class="row">
+            <div class="col-md-2">
+                <p><a class="btn btn-default" href="~/Home/PeriodicPayment" title="پرداخت دوره ای"><img src="~/Content/images/periodic.jpg"></a></p>
+            </div>
+            <div class="col-md-2">
+                <p><a class="btn btn-default" href="~/Home/VisitRequest" title="درخواست بازدید"><img src="~/Content/images/visit.jpg"></a></p>
+            </div>
+            <div class="col-md-2">
+                <!--<p><a class="btn btn-default" href="~/Home/contact" title="ارتباط با ما"><img src="~/Content/images/ContactUs.jpg"></a></p>
+                -->
+                <p><a class="btn btn-default" href="~/Home/PatientList?SeletedSupporter=0&SeletedSeyed=0" title="لیست مددجویان"><img src="~/Content/images/PatientsList.jpg"></a></p>
+            </div>
+            <div class="col-md-2">
+                <p><a class="btn btn-default" href="~/Home/CndolenceTable" title="تابلو تسلیت"><img src="~/Content/images/board.jpg"></a></p>
+            </div>
+            <div class="col-md-2">
+                <p><a class="btn btn-default" href="~/Home/Wishlist" title="لیست نیازمندیها"><img src="~/Content/images/Required.jpg"></a></p>
+            </div>
+            <div class="col-md-2">
+                <p><a class="btn btn-default" href="~/Home/OnlinePayment" title="پرداخت آنلاین"><img src="~/Content/images/OnlinePayment.jpg"></a></p>
+            </div>
+        </div>
+        <hr/>
+        <footer>
+            طراحی و نگهداری شرکت ابزار دانش غرب @DateTime.Now.Year &copy;
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/content/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

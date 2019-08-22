@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="NaghiEDM" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="NaghiEDMContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="UserSet" EntityType="NaghiEDM.User" />
+    <EntitySet Name="CountrySet" EntityType="NaghiEDM.Country" />
+    <EntitySet Name="CitySet" EntityType="NaghiEDM.City" />
+    <AssociationSet Name="CityUser" Association="NaghiEDM.CityUser">
+      <End Role="City" EntitySet="CitySet" />
+      <End Role="User" EntitySet="UserSet" />
+    </AssociationSet>
+    <EntitySet Name="ContactTypeSet" EntityType="NaghiEDM.ContactType" />
+    <AssociationSet Name="RelationTypeHelper" Association="NaghiEDM.RelationTypeHelper">
+      <End Role="RelationType" EntitySet="ContactTypeSet" />
+      <End Role="Helper" EntitySet="UserSet" />
+    </AssociationSet>
+    <EntitySet Name="DoneContactSet" EntityType="NaghiEDM.DoneContact" />
+    <AssociationSet Name="ContactTypeDoneContact" Association="NaghiEDM.ContactTypeDoneContact">
+      <End Role="ContactType" EntitySet="ContactTypeSet" />
+      <End Role="DoneContact" EntitySet="DoneContactSet" />
+    </AssociationSet>
+    <AssociationSet Name="DonatorContact" Association="NaghiEDM.DonatorDoneContact">
+      <End Role="Donator" EntitySet="UserSet" />
+      <End Role="DoneContact" EntitySet="DoneContactSet" />
+    </AssociationSet>
+    <EntitySet Name="UserGroupSet" EntityType="NaghiEDM.UserGroup" />
+    <AssociationSet Name="UserGroupUser" Association="NaghiEDM.UserGroupUser">
+      <End Role="UserGroup" EntitySet="UserGroupSet" />
+      <End Role="User" EntitySet="UserSet" />
+    </AssociationSet>
+    <EntitySet Name="RoleSet" EntityType="NaghiEDM.Role" />
+    <EntitySet Name="AssignedRoleSet" EntityType="NaghiEDM.AssignedRole" />
+    <AssociationSet Name="RoleAssignedRole" Association="NaghiEDM.RoleAssignedRole">
+      <End Role="Role" EntitySet="RoleSet" />
+      <End Role="AssignedRole" EntitySet="AssignedRoleSet" />
+    </AssociationSet>
+    <EntitySet Name="LogSet" EntityType="NaghiEDM.Log" />
+    <AssociationSet Name="UserLog" Association="NaghiEDM.UserLog">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Log" EntitySet="LogSet" />
+    </AssociationSet>
+    <AssociationSet Name="RoleLog" Association="NaghiEDM.RoleLog">
+      <End Role="Role" EntitySet="RoleSet" />
+      <End Role="Log" EntitySet="LogSet" />
+    </AssociationSet>
+    <EntitySet Name="GoodGroupSet" EntityType="NaghiEDM.GoodGroup" />
+    <EntitySet Name="GoodSet" EntityType="NaghiEDM.Good" />
+    <AssociationSet Name="GoodGroupGood" Association="NaghiEDM.GoodGroupGood">
+      <End Role="GoodGroup" EntitySet="GoodGroupSet" />
+      <End Role="Good" EntitySet="GoodSet" />
+    </AssociationSet>
+    <EntitySet Name="DonateSet" EntityType="NaghiEDM.Donate" />
+    <AssociationSet Name="DonatorPayment" Association="NaghiEDM.DonatorPayment">
+      <End Role="Donator" EntitySet="UserSet" />
+      <End Role="Payment" EntitySet="DonateSet" />
+    </AssociationSet>
+    <EntitySet Name="DonateRowSet" EntityType="NaghiEDM.DonateRow" />
+    <AssociationSet Name="DonateDonateRow" Association="NaghiEDM.DonateDonateRow">
+      <End Role="Donate" EntitySet="DonateSet" />
+      <End Role="DonateRow" EntitySet="DonateRowSet" />
+    </AssociationSet>
+    <AssociationSet Name="GoodHelp_Row" Association="NaghiEDM.GoodHelp_Row">
+      <End Role="Good" EntitySet="GoodSet" />
+      <End Role="Help_Row" EntitySet="DonateRowSet" />
+    </AssociationSet>
+    <EntitySet Name="PaymentTypeSet" EntityType="NaghiEDM.PaymentType" />
+    <AssociationSet Name="PaymentTypeHelpRow" Association="NaghiEDM.PaymentTypeHelpRow">
+      <End Role="PaymentType" EntitySet="PaymentTypeSet" />
+      <End Role="HelpRow" EntitySet="DonateRowSet" />
+    </AssociationSet>
+    <EntitySet Name="InistituteSet" EntityType="NaghiEDM.Inistitute" />
+    <AssociationSet Name="UserGroupAssignedRole" Association="NaghiEDM.UserGroupAssignedRole">
+      <End Role="UserGroup" EntitySet="UserGroupSet" />
+      <End Role="AssignedRole" EntitySet="AssignedRoleSet" />
+    </AssociationSet>
+    <EntitySet Name="DailyPointsSet" EntityType="NaghiEDM.DailyPoints" />
+    <AssociationSet Name="UserDailyPoints" Association="NaghiEDM.UserDailyPoints">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="DailyPoints" EntitySet="DailyPointsSet" />
+    </AssociationSet>
+    <EntitySet Name="NewsSet" EntityType="NaghiEDM.News" />
+    <AssociationSet Name="UserNews" Association="NaghiEDM.UserNews">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="News" EntitySet="NewsSet" />
+    </AssociationSet>
+    <EntitySet Name="GallarySet" EntityType="NaghiEDM.Gallary" />
+    <EntitySet Name="PhotoSet" EntityType="NaghiEDM.Photo" />
+    <AssociationSet Name="GallaryPhoto" Association="NaghiEDM.GallaryPhoto">
+      <End Role="Gallary" EntitySet="GallarySet" />
+      <End Role="Photo" EntitySet="PhotoSet" />
+    </AssociationSet>
+    <AssociationSet Name="NewsPhoto" Association="NaghiEDM.NewsPhoto">
+      <End Role="News" EntitySet="NewsSet" />
+      <End Role="Photo" EntitySet="PhotoSet" />
+    </AssociationSet>
+    <EntitySet Name="StateSet" EntityType="NaghiEDM.State" />
+    <AssociationSet Name="CountryState" Association="NaghiEDM.CountryState">
+      <End Role="Country" EntitySet="CountrySet" />
+      <End Role="State" EntitySet="StateSet" />
+    </AssociationSet>
+    <AssociationSet Name="StateCity" Association="NaghiEDM.StateCity">
+      <End Role="State" EntitySet="StateSet" />
+      <End Role="City" EntitySet="CitySet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Us_ID" />
+    </Key>
+    <Property Name="Us_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Us_Name" Type="String" Nullable="false" />
+    <Property Name="Us_LName" Type="String" Nullable="false" />
+    <Property Name="Us_Active" Type="Boolean" Nullable="false" />
+    <Property Name="Us_BirthDay" Type="DateTime" Nullable="true" />
+    <Property Name="Us_Phone" Type="Int64" Nullable="true" />
+    <Property Name="Us_Mob" Type="Int64" Nullable="true" />
+    <NavigationProperty Name="City" Relationship="NaghiEDM.CityUser" FromRole="User" ToRole="City" />
+    <Property Name="Us_HomeAddress" Type="String" Nullable="true" />
+    <Property Name="Us_WorkAddress" Type="String" Nullable="true" />
+    <Property Name="Us_Email" Type="String" Nullable="true" />
+    <NavigationProperty Name="UserGroup" Relationship="NaghiEDM.UserGroupUser" FromRole="User" ToRole="UserGroup" />
+    <Property Name="Us_Reg_Date" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="Co_Id" />
+    </Key>
+    <Property Name="Co_Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Co_Name" Type="String" Nullable="false" />
+    <Property Name="Co_Latin" Type="String" Nullable="true" />
+    <Property Name="Co_Tel_Code" Type="Byte" Nullable="true" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="Ct_Id" />
+    </Key>
+    <Property Name="Ct_Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ct_Name" Type="String" Nullable="false" />
+    <Property Name="Ct_Latin" Type="String" Nullable="true" />
+    <Property Name="Ct_Tel_Code" Type="Byte" Nullable="true" />
+    <NavigationProperty Name="State" Relationship="NaghiEDM.StateCity" FromRole="City" ToRole="State" />
+  </EntityType>
+  <Association Name="CityUser">
+    <End Type="NaghiEDM.City" Role="City" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="NaghiEDM.User" Role="User" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Donator" BaseType="NaghiEDM.User">
+    <Property Name="Dr_HelpDay" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="None" />
+    <NavigationProperty Name="PreferReType" Relationship="NaghiEDM.RelationTypeHelper" FromRole="Helper" ToRole="RelationType" />
+    <NavigationProperty Name="DoneContact" Relationship="NaghiEDM.DonatorDoneContact" FromRole="Donator" ToRole="DoneContact" />
+  </EntityType>
+  <EntityType Name="ContactType">
+    <Key>
+      <PropertyRef Name="CT_Code" />
+    </Key>
+    <Property Name="CT_Code" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CT_Name" Type="String" Nullable="false" />
+  </EntityType>
+  <Association Name="RelationTypeHelper">
+    <End Type="NaghiEDM.ContactType" Role="RelationType" Multiplicity="1" />
+    <End Type="NaghiEDM.Donator" Role="Helper" Multiplicity="*" />
+  </Association>
+  <EntityType Name="DoneContact">
+    <Key>
+      <PropertyRef Name="DC_Id" />
+    </Key>
+    <Property Name="DC_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="ContactType" Relationship="NaghiEDM.ContactTypeDoneContact" FromRole="DoneContact" ToRole="ContactType" />
+    <NavigationProperty Name="Donator" Relationship="NaghiEDM.DonatorDoneContact" FromRole="DoneContact" ToRole="Donator" />
+    <Property Name="DC_Date" Type="String" Nullable="false" />
+  </EntityType>
+  <Association Name="ContactTypeDoneContact">
+    <End Type="NaghiEDM.ContactType" Role="ContactType" Multiplicity="1" />
+    <End Type="NaghiEDM.DoneContact" Role="DoneContact" Multiplicity="*" />
+  </Association>
+  <Association Name="DonatorDoneContact">
+    <End Type="NaghiEDM.Donator" Role="Donator" Multiplicity="1" />
+    <End Type="NaghiEDM.DoneContact" Role="DoneContact" Multiplicity="*" />
+  </Association>
+  <EntityType Name="UserGroup">
+    <Key>
+      <PropertyRef Name="Gr_Id" />
+    </Key>
+    <Property Name="Gr_Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Gr_Name" Type="String" Nullable="false" />
+  </EntityType>
+  <Association Name="UserGroupUser">
+    <End Type="NaghiEDM.UserGroup" Role="UserGroup" Multiplicity="1" />
+    <End Type="NaghiEDM.User" Role="User" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Rol_Id" />
+    </Key>
+    <Property Name="Rol_Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ro_Name" Type="String" Nullable="false" />
+    <Property Name="Ro_Active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AssignedRole">
+    <Key>
+      <PropertyRef Name="As_Id" />
+    </Key>
+    <NavigationProperty Name="Role" Relationship="NaghiEDM.RoleAssignedRole" FromRole="AssignedRole" ToRole="Role" />
+    <Property Name="As_Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="UserGroup" Relationship="NaghiEDM.UserGroupAssignedRole" FromRole="AssignedRole" ToRole="UserGroup" />
+    <Property Name="As_Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <Association Name="RoleAssignedRole">
+    <End Type="NaghiEDM.Role" Role="Role" Multiplicity="1" />
+    <End Type="NaghiEDM.AssignedRole" Role="AssignedRole" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="Lg_Id" />
+    </Key>
+    <Property Name="Lg_Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="User" Relationship="NaghiEDM.UserLog" FromRole="Log" ToRole="User" />
+    <NavigationProperty Name="Role" Relationship="NaghiEDM.RoleLog" FromRole="Log" ToRole="Role" />
+    <Property Name="Lg_Date" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <Association Name="UserLog">
+    <End Type="NaghiEDM.User" Role="User" Multiplicity="1" />
+    <End Type="NaghiEDM.Log" Role="Log" Multiplicity="*" />
+  </Association>
+  <Association Name="RoleLog">
+    <End Type="NaghiEDM.Role" Role="Role" Multiplicity="1" />
+    <End Type="NaghiEDM.Log" Role="Log" Multiplicity="*" />
+  </Association>
+  <EntityType Name="GoodGroup">
+    <Key>
+      <PropertyRef Name="GG_Id" />
+    </Key>
+    <Property Name="GG_Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GG_Name" Type="String" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Good">
+    <Key>
+      <PropertyRef Name="Gd_Id" />
+    </Key>
+    <Property Name="Gd_Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="GoodGroup" Relationship="NaghiEDM.GoodGroupGood" FromRole="Good" ToRole="GoodGroup" />
+    <Property Name="Gd_Name" Type="String" Nullable="false" />
+    <Property Name="Gd_RequiredNo" Type="Int16" Nullable="false" />
+  </EntityType>
+  <Association Name="GoodGroupGood">
+    <End Type="NaghiEDM.GoodGroup" Role="GoodGroup" Multiplicity="1" />
+    <End Type="NaghiEDM.Good" Role="Good" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Donate">
+    <Key>
+      <PropertyRef Name="Do_Id" />
+    </Key>
+    <Property Name="Do_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Donator" Relationship="NaghiEDM.DonatorPayment" FromRole="Payment" ToRole="Donator" />
+    <Property Name="Do_Date" Type="DateTime" Nullable="false" />
+    <Property Name="Do_Type" Type="Byte" Nullable="false" />
+  </EntityType>
+  <Association Name="DonatorPayment">
+    <End Type="NaghiEDM.Donator" Role="Donator" Multiplicity="1" />
+    <End Type="NaghiEDM.Donate" Role="Payment" Multiplicity="*" />
+  </Association>
+  <EntityType Name="DonateRow">
+    <Key>
+      <PropertyRef Name="DR_Id" />
+    </Key>
+    <Property Name="DR_Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Donate" Relationship="NaghiEDM.DonateDonateRow" FromRole="DonateRow" ToRole="Donate" />
+    <NavigationProperty Name="Good" Relationship="NaghiEDM.GoodHelp_Row" FromRole="Help_Row" ToRole="Good" />
+    <Property Name="DR_Amount" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="PaymentType" Relationship="NaghiEDM.PaymentTypeHelpRow" FromRole="HelpRow" ToRole="PaymentType" />
+  </EntityType>
+  <Association Name="DonateDonateRow">
+    <End Type="NaghiEDM.Donate" Role="Donate" Multiplicity="1" />
+    <End Type="NaghiEDM.DonateRow" Role="DonateRow" Multiplicity="*" />
+  </Association>
+  <Association Name="GoodHelp_Row">
+    <End Type="NaghiEDM.Good" Role="Good" Multiplicity="0..1" />
+    <End Type="NaghiEDM.DonateRow" Role="Help_Row" Multiplicity="*" />
+  </Association>
+  <EntityType Name="PaymentType">
+    <Key>
+      <PropertyRef Name="PT_Id" />
+    </Key>
+    <Property Name="PT_Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PT_Description" Type="String" Nullable="false" />
+  </EntityType>
+  <Association Name="PaymentTypeHelpRow">
+    <End Type="NaghiEDM.PaymentType" Role="PaymentType" Multiplicity="0..1" />
+    <End Type="NaghiEDM.DonateRow" Role="HelpRow" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Inistitute">
+    <Key>
+      <PropertyRef Name="In_Id" />
+    </Key>
+    <Property Name="In_Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="In_Name" Type="String" Nullable="false" />
+    <Property Name="In_BankCard" Type="String" Nullable="true" />
+    <Property Name="In_BankAccount" Type="Int64" Nullable="true" />
+    <Property Name="In_Address" Type="String" Nullable="true" />
+    <Property Name="In_Mng_Mob" Type="Int64" Nullable="true" />
+    <Property Name="In_Tel" Type="String" Nullable="true" />
+    <Property Name="In_Fax" Type="String" Nullable="true" />
+    <Property Name="In_Email" Type="String" Nullable="true" />
+    <Property Name="In_WbAddress" Type="String" Nullable="true" />
+  </EntityType>
+  <Association Name="UserGroupAssignedRole">
+    <End Type="NaghiEDM.UserGroup" Role="UserGroup" Multiplicity="1" />
+    <End Type="NaghiEDM.AssignedRole" Role="AssignedRole" Multiplicity="*" />
+  </Association>
+  <EntityType Name="DailyPoints">
+    <Key>
+      <PropertyRef Name="DP_Id" />
+    </Key>
+    <Property Name="DP_Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DP_Sayer" Type="String" Nullable="true" />
+    <Property Name="DP_Point" Type="String" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="NaghiEDM.UserDailyPoints" FromRole="DailyPoints" ToRole="User" />
+  </EntityType>
+  <Association Name="UserDailyPoints">
+    <End Type="NaghiEDM.User" Role="User" Multiplicity="0..1" />
+    <End Type="NaghiEDM.DailyPoints" Role="DailyPoints" Multiplicity="*" />
+  </Association>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="Nw_Id" />
+    </Key>
+    <Property Name="Nw_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nw_Description" Type="String" Nullable="false" />
+    <Property Name="Nw_Title" Type="String" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="NaghiEDM.UserNews" FromRole="News" ToRole="User" />
+    <Property Name="Nw_Type" Type="Byte" Nullable="false" />
+  </EntityType>
+  <Association Name="UserNews">
+    <End Type="NaghiEDM.User" Role="User" Multiplicity="0..1" />
+    <End Type="NaghiEDM.News" Role="News" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Gallary">
+    <Key>
+      <PropertyRef Name="Ga_Id" />
+    </Key>
+    <Property Name="Ga_Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ga_Title" Type="String" Nullable="false" />
+    <Property Name="Ga_Description" Type="String" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Photo">
+    <Key>
+      <PropertyRef Name="Ph_Id" />
+    </Key>
+    <Property Name="Ph_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ph_Description" Type="String" Nullable="false" />
+    <Property Name="Ph_Title" Type="String" Nullable="false" />
+    <Property Name="Ph_Path" Type="String" Nullable="false" />
+    <NavigationProperty Name="Gallary" Relationship="NaghiEDM.GallaryPhoto" FromRole="Photo" ToRole="Gallary" />
+    <NavigationProperty Name="News" Relationship="NaghiEDM.NewsPhoto" FromRole="Photo" ToRole="News" />
+    <Property Name="Ph_Showable" Type="Boolean" Nullable="false" />
+    <Property Name="Ph_Link" Type="String" Nullable="false" />
+  </EntityType>
+  <Association Name="GallaryPhoto">
+    <End Type="NaghiEDM.Gallary" Role="Gallary" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="NaghiEDM.Photo" Role="Photo" Multiplicity="*" />
+  </Association>
+  <Association Name="NewsPhoto">
+    <End Type="NaghiEDM.News" Role="News" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="NaghiEDM.Photo" Role="Photo" Multiplicity="*" />
+  </Association>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="St_Id" />
+    </Key>
+    <Property Name="St_Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="St_Name" Type="String" Nullable="false" />
+    <Property Name="St_Latin" Type="String" Nullable="true" />
+    <NavigationProperty Name="Country" Relationship="NaghiEDM.CountryState" FromRole="State" ToRole="Country" />
+  </EntityType>
+  <Association Name="CountryState">
+    <End Type="NaghiEDM.Country" Role="Country" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="NaghiEDM.State" Role="State" Multiplicity="*" />
+  </Association>
+  <Association Name="StateCity">
+    <End Type="NaghiEDM.State" Role="State" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="NaghiEDM.City" Role="City" Multiplicity="*" />
+  </Association>
+</Schema>

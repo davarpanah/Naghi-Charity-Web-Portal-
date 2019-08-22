@@ -1,0 +1,237 @@
+﻿<style type="text/css">
+    .MyForm {width: 800px;}
+    .MyCol {min-width: 100px;}
+</style>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+@model test1.Models.PeriodicPaymentModel
+@{
+    ViewBag.Title = "فرم درخواست عضویت حامیان کودکان معلول نیازمند مرکز خیریه نورالرضا";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#SelectedCountryCombo").change(function () {
+            $.ajax({
+                type: "POST",
+                url: "ChangeState",
+                data: { SelectedCountry: $("#SelectedCountryCombo option:selected").prop('value')},
+                cache: false,
+                success: function (data) {
+                    var StateCombo=$("#SelectedStateCombo");
+                    StateCombo.empty();
+                    for (var x = 0; x < data.length; x++) {
+                        StateCombo.append("<option value=" + data[x].value + ">" + data[x].text + "</option>");
+
+                    var CityCombo = $("#SelectedCityCombo");
+                    CityCombo.empty();
+                    CityCombo.append("<option value=" + data[0].value + ">" + data[0].text + "</option>");
+                    }
+                },
+                error: function () {
+                    alert(" خطا در بارگذاری لیست استانها");
+                }
+            })
+        }),
+        $("#SelectedStateCombo").change(function () {
+            $.ajax({
+                type: "POST",
+                url: "ChangeCity",
+                data: { SelectedState: $("#SelectedStateCombo option:selected").prop('value') },
+                cache: false,
+                success: function (data) {
+                    var CityCombo = $("#SelectedCityCombo");
+                    CityCombo.empty();
+                    for (var x = 0; x < data.length; x++) {
+                        CityCombo.append("<option value=" + data[x].value + ">" + data[x].text + "</option>");
+                    }
+                },
+                error: function () {
+                    alert(" خطا در بارگذاری لیست شهرها");
+                }
+            })
+        })
+    })
+</script>
+<h2>@ViewBag.Title</h2>
+<br/>
+<p>
+رسول خدا فرمودند
+</p>
+<p>
+    کسی که یتیمی را سرپرستی نماید و عهده دار نفقه و مخارج او گردد من و او در بهشت پهلوی هم هستیم سپس انگشت سبابه و انگشت وسط را پهلوی هم گذاشت و فرمود: مانند ایندو که پهلوی یکدیگر هستند
+</p>
+<br/>
+@using Microsoft.AspNet.Identity
+@using (Html.BeginForm("PeriodicPayment2", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <center class="FormCover">
+        <div class="MyForm">
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="col-xs-6 form-group">
+                    @Html.LabelFor(m => m.Us_LName, new { @class = "MyCol" })
+                    @Html.EditorFor(m => m.Us_LName)
+                </div>
+                <div class="col-xs-6 form-group">
+                    @Html.LabelFor(m => m.Us_Name, new { @class = "MyCol" })
+                    @Html.EditorFor(m => m.Us_Name)
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-6 form-group">
+                </div>
+                <div class="col-xs-6 form-group">
+                    @Html.LabelFor(m => m.Us_Phone, new { @class = "MyCol" })
+                    @Html.EditorFor(m => m.Us_Phone)
+                </div>
+            </div>
+            <div class="form-group">
+                @if (Request.IsAuthenticated)
+                {
+                    <div class="col-xs-6 form-group">
+                        @Html.LabelFor(m => m.Us_Email, new { @class = "MyCol" })
+                        @Html.DisplayFor(m => m.Us_Email)
+                    </div>
+                    <div class="col-xs-6 form-group">
+                        @Html.LabelFor(m => m.Us_Mob, new { @class = "MyCol" })
+                        @Html.DisplayFor(m => m.Us_Mob)
+                    </div>
+                }
+                else
+                {
+                    <div class="col-xs-6 form-group">
+                        @Html.LabelFor(m => m.Us_Email, new { @class = "MyCol" })
+                        @Html.EditorFor(m => m.Us_Email)
+                    </div>
+                    <div class="col-xs-6 form-group">
+                        @Html.LabelFor(m => m.Us_Mob, new { @class = "MyCol" })
+                        @Html.EditorFor(m => m.Us_Mob)
+                    </div>
+                }
+            </div>
+            <div class="form-group">
+                <div class="col-xs-6 form-group">
+                    @Html.LabelFor(m => m.Us_WorkAddress, new { @class = "MyCol" })
+                    @Html.TextAreaFor(m => m.Us_WorkAddress)
+                </div>
+                <div class="col-xs-6 form-group">
+                    @Html.LabelFor(m => m.Us_HomeAddress, new { @class = "MyCol" })
+                    @Html.TextAreaFor(m => m.Us_HomeAddress)
+                </div>
+            </div>
+            <div class="form-group">
+                <div id="StateContainer" class="col-xs-6 form-group">
+                    @Html.LabelFor(m => m.SelectedState, new { @class = "MyCol" })
+                    @Html.DropDownListFor(m => m.SelectedState, new SelectList(Model.States, "value", "text"), new { id = "SelectedStateCombo" })
+                </div>
+                <div class="col-xs-6 form-group">
+                    @Html.LabelFor(m => m.SelectedCountry, new { @class = "MyCol" })
+                    @Html.DropDownListFor(m => m.SelectedCountry, new SelectList(Model.Countries, "value", "text"), new { id = "SelectedCountryCombo" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-6 form-group">
+                </div>
+                <div class="col-xs-6 form-group">
+                    @Html.LabelFor(m => m.City_Ct_Id, new { @class = "MyCol" })
+                    @Html.DropDownListFor(m => m.City_Ct_Id, new SelectList(Model.Cities, "value", "text"), new { id = "SelectedCityCombo" })
+                </div>
+            </div>
+            <hr />
+            <p>
+                در کدامیک از موارد غیر نقدی زیر تمایل به همکاری و مساعدت دارید؟
+            </p>
+            <div class="form-group">
+                <div class="col-xs-6 form-group">
+                    @Html.CheckBoxFor(m => m.Dr_Clothes)
+                    @Html.LabelFor(m => m.Dr_Clothes, new { @class = "MyCol" })
+                </div>
+                <div class="col-xs-6 form-group">
+                    @Html.CheckBoxFor(m => m.Dr_Food)
+                    @Html.LabelFor(m => m.Dr_Food, new { @class = "MyCol" })
+                </div>
+                <div class="col-xs-6 form-group">
+                    @Html.CheckBoxFor(m => m.Dr_Cleaner)
+                    @Html.LabelFor(m => m.Dr_Cleaner, new { @class = "MyCol" })
+                </div>
+                <div class="col-xs-6 form-group">
+                    @Html.CheckBoxFor(m => m.Dr_Stationery)
+                    @Html.LabelFor(m => m.Dr_Stationery, new { @class = "MyCol" })
+                </div>
+                <div class="col-xs-6 form-group">
+                    @Html.CheckBoxFor(m => m.Dr_Medical)
+                    @Html.LabelFor(m => m.Dr_Medical, new { @class = "MyCol" })
+                </div>
+                <div class="col-xs-6 form-group">
+                    @Html.CheckBoxFor(m => m.Dr_Endowment)
+                    @Html.LabelFor(m => m.Dr_Endowment, new { @class = "MyCol" })
+                </div>
+            </div>
+            <hr />
+            <p>
+                مبالغ نقدی خود را از چه طریقی تحویل می نمایید؟
+            </p>
+            <div class="form-group">
+                <div class="col-xs-6 form-group">
+                    @Html.LabelFor(m => m.Dr_Amount, new { @class = "MyCol" })
+                    @Html.EditorFor(m => m.Dr_Amount)
+                </div>
+                <div class="col-xs-6 form-group">
+                    @Html.LabelFor(m => m.Dr_Month_Duration, new { @class = "MyCol" })
+                    @Html.EditorFor(m => m.Dr_Month_Duration)
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-6 form-group">
+                    @Html.CheckBoxFor(m => m.Dr_CardTranscation)
+                    @Html.LabelFor(m => m.Dr_CardTranscation, new { @class = "MyCol" })
+                </div>
+                <div class="col-xs-6 form-group">
+                    @Html.CheckBoxFor(m => m.Dr_AccTransaction)
+                    @Html.LabelFor(m => m.Dr_AccTransaction, new { @class = "MyCol" })
+                </div>
+                <div class="col-xs-6 form-group">
+                    @Html.CheckBoxFor(m => m.Dr_Inperson)
+                    @Html.LabelFor(m => m.Dr_Inperson, new { @class = "MyCol" })
+                </div>
+                <div class="col-xs-6 form-group">
+                    @Html.CheckBoxFor(m => m.Dr_Representative)
+                    @Html.LabelFor(m => m.Dr_Representative, new { @class = "MyCol" })
+                </div>
+            </div>
+            <hr />
+            <p>
+                نحوه یاداوری
+            </p>
+            <div class="form-group">
+                <div class="col-xs-6 form-group">
+                    <label>@Html.RadioButtonFor(m => m.Dr_CT_Code, 1, new { @checked = 1 == Model.Dr_CT_Code }) از طریق پیامک</label>
+                </div>
+                <div class="col-xs-6 form-group">
+                    <label>@Html.RadioButtonFor(m => m.Dr_CT_Code, 0, new { @checked = 0 == Model.Dr_CT_Code }) از طریق ایمیل</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-6 form-group">
+                </div>
+                <div class="col-xs-6 form-group">
+                    @Html.LabelFor(m => m.Dr_HelpDay, new { @class = "MyCol" })
+                    @Html.EditorFor(m => m.Dr_HelpDay)
+                </div>
+            </div>
+            <hr />
+            <div class="form-group">
+                <div class="col-xs-6 form-group">
+                </div>
+                <div class="col-xs-6 form-group">
+                    <input type="submit" value="ارسال" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </center>
+   <br/>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

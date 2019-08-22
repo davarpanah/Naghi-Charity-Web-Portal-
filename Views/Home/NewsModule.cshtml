@@ -1,0 +1,52 @@
+﻿<style>
+    .oblock {
+        direction: rtl;
+        padding: 25px;
+        padding-bottom: 25px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 300px;
+        text-align: right;
+    }
+
+    .TitrDetails {
+        font-weight: bold;
+        color: #ffd800;
+        font-size: 13px;
+    }
+    h4 {
+        text-align: center;
+    }
+</style>
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+@model test1.Models.NewsListModel
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".TitrDetailsClick").click(function (e) {
+            var clicked = $(e.target);
+            var selected = clicked.siblings(0).filter('#SelectedNwID').prop('value');
+            location.replace("/Home/News?SelectedNews=" + selected+ "&Nw_Type="+@Model.Nw_Type);
+        })
+    })
+</script>
+
+@{
+    Layout = "";
+    ViewBag.Title = "اخبار موسسه";
+}
+<h4>@ViewBag.Title</h4>
+
+<div class="oblock">
+    @foreach (var item in Model.NewsItems.Select((value, i) => new { i, value }))
+    {
+        <div>
+            <a class="TitrDetailsClick">@Html.DisplayFor(m => item.value.Nw_Title, new { @class = "TitrDetails" })</a>
+            @Html.DisplayFor(m => item.value.Nw_Date)
+            <br>@Html.DisplayFor(m => item.value.Nw_ShortDescription)
+            @Html.HiddenFor(m => item.i, new { @id = "SelectedNwID" })
+            <br>
+        </div>
+    }
+</div>

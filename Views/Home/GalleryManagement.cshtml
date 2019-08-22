@@ -1,0 +1,93 @@
+﻿
+<style>
+    body {direction: rtl;}
+    h2 {text-align: center;}
+    .dtable {display: table;border: 3px solid green;}
+    .drow {display: table-row;border: 3px solid green;}
+    .dcell {display: table-cell;padding: 15px;}
+    .dcell > * {vertical-align: middle;}
+    img {width: 70px;height: 30px;padding: 10px;}
+    #oblock {display: block; margin-left: auto; margin-right: auto; min-width: 700px;}
+    .ImgEdit, .ImgDelete {font-size: 8px; width: 35px;height: 17px;}
+    .imgtitle {font-size: 12px;font-weight: bold;}
+    .imgdescription {font-size: 12px;}
+    .ErrorMessage {margin-top: 2em; margin-right: 2em; color: red; font-size: 12px;}
+</style>
+
+@model List<test1.Models.Gallery>
+@{
+    ViewBag.Title = "مدیریت گالریها";
+}
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<h2>@ViewBag.Title</h2>
+@{
+    Layout = "";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var Ind = -1;
+        var EditOrAdd = false;
+        var ImagPerRowNo = 4;
+        ImageNo = ImageNo + 1;
+        @*
+        @foreach (var item in Model.Select((value,i) => new {i, value}))
+        {
+            if (@item.i % ImagPerRowNo == 0) {
+                //alert("ffff");
+                var StrRow = "<tr class='drow'>";
+                for (var i = 0; i < ImagPerRowNo; ++i)
+                    StrRow += "<td class='dcell'></td>";
+                StrRow += "</tr>";
+                $("#Row1").append(StrRow);
+            }
+            var StrCell = "<center>"+
+                "<input type='button' id='" + @item.i + "'  value='ویرایش' class='GrEdit' />" +
+                "<input type='button' id='" + @item.i + "'  value='حذف' class='GrDelete' /><br/>" +
+                "<label class='Grtitle'>" + @item.value.Ga_Title + "</label><br/>" +
+                "<img src=" + @item.value.Tmp_Ph_Path + " /><br/>" +
+                "<label class='Grdescription'>" + @item.value.Ga_Description + "</label>" +
+                "</center>";
+           JQuery("#Row1").find(".dcell").eq(@item.i).append(StrCell);
+        }
+        *@
+    });
+</script>
+
+<center>
+    <div id="oblock">
+        <div class="dtable">
+            <div id="Row1" class="drow">
+                @{int ImagPerRowNo=4;}
+                @foreach (var item in Model.Select((value,i) => new {i, value}))
+                {
+                    if (@item.i % ImagPerRowNo == 0) 
+                    {
+                        <div class='drow'>
+                    }
+                    <div class='dcell'>
+                            <a href="">
+                                @using (Html.BeginForm("EditGallery", "Home", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                                {
+                                    <input type='submit' id=@item.i.ToString() value='ویرایش' class='GrEdit' />
+                                }
+                                @using (Html.BeginForm("DeleteGallery", "Home", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                                {
+                                    <input type='submit' id=@item.i.ToString() value='حذف' class='GrDelete' />                                    
+                                }
+                                <br />
+                                <label class='Grtitle'> @item.value.Ga_Title</label><br />
+                                <img src=@item.value.Tmp_Ph_Path /><br />
+                                <label class='Grdescription'> @item.value.Ga_Description </label>
+                           </a>
+                    </div>
+                    if (@item.i % ImagPerRowNo == 0) 
+                    {
+                        </div>
+                    }
+              }
+           </div>
+        </div>
+    </div>
+</center>
+

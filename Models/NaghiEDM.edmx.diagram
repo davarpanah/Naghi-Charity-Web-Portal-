@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d170e5015599448c99186a5bd815f49d" Name="Diagram1" ZoomLevel="92" >
+        <EntityTypeShape EntityType="NaghiEDM.User" Width="1.5" PointX="4.625" PointY="0.5" />
+        <EntityTypeShape EntityType="NaghiEDM.Country" Width="1.5" PointX="0.5" PointY="1" />
+        <EntityTypeShape EntityType="NaghiEDM.City" Width="1.5" PointX="2.375" PointY="2.625" />
+        <AssociationConnector Association="NaghiEDM.CityUser" />
+        <EntityTypeShape EntityType="NaghiEDM.Donator" Width="1.5" PointX="3.375" PointY="5.5" />
+        <InheritanceConnector EntityType="NaghiEDM.Donator" />
+        <EntityTypeShape EntityType="NaghiEDM.ContactType" Width="1.5" PointX="5.5" PointY="6.75" />
+        <AssociationConnector Association="NaghiEDM.RelationTypeHelper" />
+        <EntityTypeShape EntityType="NaghiEDM.DoneContact" Width="1.5" PointX="8.125" PointY="6.125" />
+        <AssociationConnector Association="NaghiEDM.ContactTypeDoneContact" />
+        <AssociationConnector Association="NaghiEDM.DonatorDoneContact" />
+        <EntityTypeShape EntityType="NaghiEDM.UserGroup" Width="1.5" PointX="6.75" PointY="2.375" />
+        <AssociationConnector Association="NaghiEDM.UserGroupUser" />
+        <EntityTypeShape EntityType="NaghiEDM.Role" Width="1.5" PointX="8.75" PointY="3.875" />
+        <EntityTypeShape EntityType="NaghiEDM.AssignedRole" Width="1.5" PointX="8.75" PointY="1.875" />
+        <AssociationConnector Association="NaghiEDM.RoleAssignedRole" />
+        <EntityTypeShape EntityType="NaghiEDM.Log" Width="1.5" PointX="6.625" PointY="4" />
+        <AssociationConnector Association="NaghiEDM.UserLog" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="NaghiEDM.RoleLog" />
+        <EntityTypeShape EntityType="NaghiEDM.GoodGroup" Width="1.5" PointX="10.125" PointY="7.375" />
+        <EntityTypeShape EntityType="NaghiEDM.Good" Width="1.5" PointX="2.375" PointY="7.25" />
+        <AssociationConnector Association="NaghiEDM.GoodGroupGood" />
+        <EntityTypeShape EntityType="NaghiEDM.Donate" Width="1.5" PointX="0.5" PointY="2.875" />
+        <AssociationConnector Association="NaghiEDM.DonatorPayment" />
+        <EntityTypeShape EntityType="NaghiEDM.DonateRow" Width="1.5" PointX="0.5" PointY="4.875" />
+        <AssociationConnector Association="NaghiEDM.DonateDonateRow" />
+        <AssociationConnector Association="NaghiEDM.GoodHelp_Row" />
+        <EntityTypeShape EntityType="NaghiEDM.PaymentType" Width="1.5" PointX="0.5" PointY="7.375" />
+        <AssociationConnector Association="NaghiEDM.PaymentTypeHelpRow" />
+        <EntityTypeShape EntityType="NaghiEDM.Inistitute" Width="1.5" PointX="10.5" PointY="2.75" />
+        <AssociationConnector Association="NaghiEDM.UserGroupAssignedRole" />
+        <EntityTypeShape EntityType="NaghiEDM.DailyPoints" Width="1.5" PointX="6.875" PointY="0.5" />
+        <AssociationConnector Association="NaghiEDM.UserDailyPoints" />
+        <EntityTypeShape EntityType="NaghiEDM.News" Width="1.5" PointX="10.5" PointY="0.5" />
+        <AssociationConnector Association="NaghiEDM.UserNews" ></AssociationConnector>
+        <EntityTypeShape EntityType="NaghiEDM.Gallary" Width="1.5" PointX="12.5" PointY="0.5" />
+        <EntityTypeShape EntityType="NaghiEDM.Photo" Width="1.5" PointX="12.625" PointY="2.875" />
+        <AssociationConnector Association="NaghiEDM.GallaryPhoto" />
+        <AssociationConnector Association="NaghiEDM.NewsPhoto" />
+        <EntityTypeShape EntityType="NaghiEDM.State" Width="1.5" PointX="2.375" PointY="0.5" />
+        <AssociationConnector Association="NaghiEDM.CountryState" />
+        <AssociationConnector Association="NaghiEDM.StateCity" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

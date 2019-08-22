@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NaghiInistituteModelStoreContainer" CdmEntityContainer="NaghiInistituteEntities1">
+    <EntitySetMapping Name="AssignedRoleSet">
+      <EntityTypeMapping TypeName="NaghiInistituteModel.AssignedRoleSet">
+        <MappingFragment StoreEntitySet="AssignedRoleSet">
+          <ScalarProperty Name="As_Active" ColumnName="As_Active" />
+          <ScalarProperty Name="As_Id" ColumnName="As_Id" />
+          <ScalarProperty Name="Role_Rol_Id" ColumnName="Role_Rol_Id" />
+          <ScalarProperty Name="UserGroup_Gr_Id" ColumnName="UserGroup_Gr_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CitySet">
+      <EntityTypeMapping TypeName="NaghiInistituteModel.CitySet">
+        <MappingFragment StoreEntitySet="CitySet">
+          <ScalarProperty Name="Ct_Id" ColumnName="Ct_Id" />
+          <ScalarProperty Name="Ct_Name" ColumnName="Ct_Name" />
+          <ScalarProperty Name="Ct_Latin" ColumnName="Ct_Latin" />
+          <ScalarProperty Name="Ct_Tel_Code" ColumnName="Ct_Tel_Code" />
+          <ScalarProperty Name="State_St_Id" ColumnName="State_St_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CountrySet">
+      <EntityTypeMapping TypeName="NaghiInistituteModel.CountrySet">
+        <MappingFragment StoreEntitySet="CountrySet">
+          <ScalarProperty Name="Co_Id" ColumnName="Co_Id" />
+          <ScalarProperty Name="Co_Name" ColumnName="Co_Name" />
+          <ScalarProperty Name="Co_Latin" ColumnName="Co_Latin" />
+          <ScalarProperty Name="Co_Tel_Code" ColumnName="Co_Tel_Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DailyPointsSet">
+      <EntityTypeMapping TypeName="NaghiInistituteModel.DailyPointsSet">
+        <MappingFragment StoreEntitySet="DailyPointsSet">
+          <ScalarProperty Name="DP_Id" ColumnName="DP_Id" />
+          <ScalarProperty Name="DP_Sayer" ColumnName="DP_Sayer" />
+          <ScalarProperty Name="DP_Point" ColumnName="DP_Point" />
+          <ScalarProperty Name="User_Us_ID" ColumnName="User_Us_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DonateRowSet">
+      <EntityTypeMapping TypeName="NaghiInistituteModel.DonateRowSet">
+        <MappingFragment StoreEntitySet="DonateRowSet">
+          <ScalarProperty Name="DR_Id" ColumnName="DR_Id" />
+          <ScalarProperty Name="DR_Amount" ColumnName="DR_Amount" />
+          <ScalarProperty Name="Donate_Do_Id" ColumnName="Donate_Do_Id" />
+          <ScalarProperty Name="Good_Gd_Id" ColumnName="Good_Gd_Id" />
+          <ScalarProperty Name="PaymentType_PT_Id" ColumnName="PaymentType_PT_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DonateSet">
+      <EntityTypeMapping TypeName="NaghiInistituteModel.DonateSet">
+        <MappingFragment StoreEntitySet="DonateSet">
+          <ScalarProperty Name="Do_Id" ColumnName="Do_Id" />
+          <ScalarProperty Name="Do_Date" ColumnName="Do_Date" />
+          <ScalarProperty Name="Do_Type" ColumnName="Do_Type" />
+          <ScalarProperty Name="Donator_Us_ID" ColumnName="Donator_Us_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DoneContactSet">
+      <EntityTypeMapping TypeName="NaghiInistituteModel.DoneContactSet">
+        <MappingFragment StoreEntitySet="DoneContactSet">
+          <ScalarProperty Name="DC_Id" ColumnName="DC_Id" />
+          <ScalarProperty Name="DC_Date" ColumnName="DC_Date" />
+          <ScalarProperty Name="ContactType_CT_Code" ColumnName="ContactType_CT_Code" />
+          <ScalarProperty Name="Donator_Us_ID" ColumnName="Donator_Us_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GallarySet">
+      <EntityTypeMapping TypeName="NaghiInistituteModel.GallarySet">
+        <MappingFragment StoreEntitySet="GallarySet">
+          <ScalarProperty Name="Ga_Id" ColumnName="Ga_Id" />
+          <ScalarProperty Name="Ga_Title" ColumnName="Ga_Title" />
+          <ScalarProperty Name="Ga_Description" ColumnName="Ga_Description" />
+          <ScalarProperty Name="Ga_Showable" ColumnName="Ga_Showable" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GoodGroupSet">
+      <EntityTypeMapping TypeName="NaghiInistituteModel.GoodGroupSet">
+        <MappingFragment StoreEntitySet="GoodGroupSet">
+          <ScalarProperty Name="GG_Id" ColumnName="GG_Id" />
+          <ScalarProperty Name="GG_Name" ColumnName="GG_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GoodSet">
+      <EntityTypeMapping TypeName="NaghiInistituteModel.GoodSet">
+        <MappingFragment StoreEntitySet="GoodSet">
+          <ScalarProperty Name="Gd_Id" ColumnName="Gd_Id" />
+          <ScalarProperty Name="Gd_Name" ColumnName="Gd_Name" />
+          <ScalarProperty Name="Gd_RequiredNo" ColumnName="Gd_RequiredNo" />
+          <ScalarProperty Name="GoodGroup_GG_Id" ColumnName="GoodGroup_GG_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InistituteSet">
+      <EntityTypeMapping TypeName="NaghiInistituteModel.InistituteSet">
+        <MappingFragment StoreEntitySet="InistituteSet">
+          <ScalarProperty Name="In_Id" ColumnName="In_Id" />
+          <ScalarProperty Name="In_Name" ColumnName="In_Name" />
+          <ScalarProperty Name="In_BankCard" ColumnName="In_BankCard" />
+          <ScalarProperty Name="In_BankAccount" ColumnName="In_BankAccount" />
+          <ScalarProperty Name="In_Address" ColumnName="In_Address" />
+          <ScalarProperty Name="In_Mng_Mob" ColumnName="In_Mng_Mob" />
+          <ScalarProperty Name="In_Tel" ColumnName="In_Tel" />
+          <ScalarProperty Name="In_Fax" ColumnName="In_Fax" />
+          <ScalarProperty Name="In_Email" ColumnName="In_Email" />
+          <ScalarProperty Name="In_WbAddress" ColumnName="In_WbAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LogSet">
+      <EntityTypeMapping TypeName="NaghiInistituteModel.LogSet">
+        <MappingFragment StoreEntitySet="LogSet">
+          <ScalarProperty Name="Lg_Id" ColumnName="Lg_Id" />
+          <ScalarProperty Name="Lg_Date" ColumnName="Lg_Date" />
+          <ScalarProperty Name="User_Us_ID" ColumnName="User_Us_ID" />
+          <ScalarProperty Name="Role_Rol_Id" ColumnName="Role_Rol_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NewsSet">
+      <EntityTypeMapping TypeName="NaghiInistituteModel.NewsSet">
+        <MappingFragment StoreEntitySet="NewsSet">
+          <ScalarProperty Name="Nw_Id" ColumnName="Nw_Id" />
+          <ScalarProperty Name="Nw_Description" ColumnName="Nw_Description" />
+          <ScalarProperty Name="Nw_Title" ColumnName="Nw_Title" />
+          <ScalarProperty Name="Nw_Type" ColumnName="Nw_Type" />
+          <ScalarProperty Name="User_Us_ID" ColumnName="User_Us_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentTypeSet">
+      <EntityTypeMapping TypeName="NaghiInistituteModel.PaymentTypeSet">
+        <MappingFragment StoreEntitySet="PaymentTypeSet">
+          <ScalarProperty Name="PT_Id" ColumnName="PT_Id" />
+          <ScalarProperty Name="PT_Description" ColumnName="PT_Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhotoSet">
+      <EntityTypeMapping TypeName="NaghiInistituteModel.PhotoSet">
+        <MappingFragment StoreEntitySet="PhotoSet">
+          <ScalarProperty Name="Ph_Id" ColumnName="Ph_Id" />
+          <ScalarProperty Name="Ph_Description" ColumnName="Ph_Description" />
+          <ScalarProperty Name="Ph_Title" ColumnName="Ph_Title" />
+          <ScalarProperty Name="Ph_Path" ColumnName="Ph_Path" />
+          <ScalarProperty Name="Ph_Showable" ColumnName="Ph_Showable" />
+          <ScalarProperty Name="Ph_Link" ColumnName="Ph_Link" />
+          <ScalarProperty Name="Gallary_Ga_Id" ColumnName="Gallary_Ga_Id" />
+          <ScalarProperty Name="News_Nw_Id" ColumnName="News_Nw_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleSet">
+      <EntityTypeMapping TypeName="NaghiInistituteModel.RoleSet">
+        <MappingFragment StoreEntitySet="RoleSet">
+          <ScalarProperty Name="Rol_Id" ColumnName="Rol_Id" />
+          <ScalarProperty Name="Ro_Name" ColumnName="Ro_Name" />
+          <ScalarProperty Name="Ro_Active" ColumnName="Ro_Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StateSet">
+      <EntityTypeMapping TypeName="NaghiInistituteModel.StateSet">
+        <MappingFragment StoreEntitySet="StateSet">
+          <ScalarProperty Name="St_Id" ColumnName="St_Id" />
+          <ScalarProperty Name="St_Name" ColumnName="St_Name" />
+          <ScalarProperty Name="St_Latin" ColumnName="St_Latin" />
+          <ScalarProperty Name="Country_Co_Id" ColumnName="Country_Co_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="NaghiInistituteModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserGroupSet">
+      <EntityTypeMapping TypeName="NaghiInistituteModel.UserGroupSet">
+        <MappingFragment StoreEntitySet="UserGroupSet">
+          <ScalarProperty Name="Gr_Id" ColumnName="Gr_Id" />
+          <ScalarProperty Name="Gr_Name" ColumnName="Gr_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSet">
+      <EntityTypeMapping TypeName="NaghiInistituteModel.UserSet">
+        <MappingFragment StoreEntitySet="UserSet">
+          <ScalarProperty Name="Us_ID" ColumnName="Us_ID" />
+          <ScalarProperty Name="Us_Name" ColumnName="Us_Name" />
+          <ScalarProperty Name="Us_LName" ColumnName="Us_LName" />
+          <ScalarProperty Name="Us_Active" ColumnName="Us_Active" />
+          <ScalarProperty Name="Us_BirthDay" ColumnName="Us_BirthDay" />
+          <ScalarProperty Name="Us_Phone" ColumnName="Us_Phone" />
+          <ScalarProperty Name="Us_Mob" ColumnName="Us_Mob" />
+          <ScalarProperty Name="Us_HomeAddress" ColumnName="Us_HomeAddress" />
+          <ScalarProperty Name="Us_WorkAddress" ColumnName="Us_WorkAddress" />
+          <ScalarProperty Name="Us_Email" ColumnName="Us_Email" />
+          <ScalarProperty Name="Us_Reg_Date" ColumnName="Us_Reg_Date" />
+          <ScalarProperty Name="City_Ct_Id" ColumnName="City_Ct_Id" />
+          <ScalarProperty Name="UserGroup_Gr_Id" ColumnName="UserGroup_Gr_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSet_Donator">
+      <EntityTypeMapping TypeName="NaghiInistituteModel.UserSet_Donator">
+        <MappingFragment StoreEntitySet="UserSet_Donator">
+          <ScalarProperty Name="Dr_HelpDay" ColumnName="Dr_HelpDay" />
+          <ScalarProperty Name="Us_ID" ColumnName="Us_ID" />
+          <ScalarProperty Name="PreferReType_CT_Code" ColumnName="PreferReType_CT_Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

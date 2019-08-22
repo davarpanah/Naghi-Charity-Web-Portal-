@@ -1,0 +1,126 @@
+﻿<style>
+    .oblock {
+        direction: rtl;
+        background: #fdffc9;
+        padding: 25px;
+        padding-bottom: 25px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 700px;
+        text-align: right;
+    }
+
+    .oblock2 {
+        direction: rtl;
+        background: #eeecc4;
+        padding: 25px;
+        padding-bottom: 25px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 350px;
+        text-align: right;
+    }
+
+    .TitrDetails {
+        font-weight: bold;
+        color: #ffd800;
+        font-size: 13px;
+    }
+
+    #Nw_Description {
+        width: 100%;
+        height: 100px;
+    }
+
+    .Img_News {
+        width: 130px;
+        height: 155px;
+    }
+
+    td {
+        vertical-align: top;
+    }
+</style>
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".TitrDetailsClick").click(function (e) {
+            var clicked = $(e.target);
+            var selected = clicked.siblings(0).filter('#SelectedNwID').prop('value');
+            location.replace("/Home/News?SelectedNews=" + selected);
+        })
+    })
+</script>
+@model test1.Models.NewsListModel
+@{
+    ViewBag.Title = "رویدادهای موسسه";
+}
+<h2>@ViewBag.Title</h2>
+
+<center>
+    @if(Model.NewsItems.Count>0)
+    {
+        <table class="form-group">
+            <tr>
+                <td class="oblock2 col-xs-6 form-group">
+                    @foreach (var item in Model.NewsItems.Select((value, i) => new { i, value }))
+                    {
+                        <div class="row">
+                            @Html.LabelFor(m => item.value.Nw_Date)
+                            @Html.DisplayFor(m => item.value.Nw_Date)
+                            <br>@Html.LabelFor(m => item.value.User_Name)
+                            @Html.DisplayFor(m => item.value.User_Name)
+                            <br><a class="TitrDetailsClick">@Html.DisplayFor(m => item.value.Nw_Title, new { @class = "TitrDetails" })</a>
+                            <br>@Html.DisplayFor(m => item.value.Nw_ShortDescription)
+                            @Html.HiddenFor(m => item.i, new { @id = "SelectedNwID" })
+                        </div>
+                        <hr />
+                    }
+                </td>
+                <td class="oblock col-xs-6 form-group">
+                    @Html.HiddenFor(m => m.SeletedNews, new { @id = "SeletedNews" })
+                    @Html.LabelFor(m => m.NewsItems[Model.SeletedNews].Nw_Id, new { @class = "MyCol" })
+                    @Html.DisplayFor(m => m.NewsItems[Model.SeletedNews].Nw_Id, new { @id = "Nw_Id" })
+                    <br>
+                    @Html.LabelFor(m => m.NewsItems[Model.SeletedNews].Nw_Date, new { @class = "MyCol" })
+                    @Html.DisplayFor(m => m.NewsItems[Model.SeletedNews].Nw_Date, new { @id = "Nw_Date" })
+                    <br>
+                    @Html.LabelFor(m => m.NewsItems[Model.SeletedNews].Nw_Title, new { @class = "MyCol" })
+                    @Html.DisplayFor(m => m.NewsItems[Model.SeletedNews].Nw_Title, new { @id = "Nw_Title" })
+                    <br>
+                    @Html.LabelFor(m => m.NewsItems[Model.SeletedNews].User_Name, new { @class = "MyCol" })
+                    @Html.DisplayFor(m => m.NewsItems[Model.SeletedNews].User_Name, new { @id = "User_Name" })
+                    <br>
+                    @Html.LabelFor(m => m.NewsItems[Model.SeletedNews].Nw_Description, new { @class = "MyCol" })
+                    @Html.TextAreaFor(m => m.NewsItems[Model.SeletedNews].Nw_Description, new { @id = "Nw_Description" })
+                    <br><br>
+                    @if (Model.NewsItems[Model.SeletedNews].Nw_Photo1.Length > 0)
+                    {
+                        <img src="@Url.Content(Model.NewsItems[Model.SeletedNews].Nw_Photo1)" class="Img_News" />
+                    }
+                    @if (Model.NewsItems[Model.SeletedNews].Nw_Photo2.Length > 0)
+                    {
+                        <img src="@Url.Content(Model.NewsItems[Model.SeletedNews].Nw_Photo2)" class="Img_News" />
+                    }
+                    @if (Model.NewsItems[Model.SeletedNews].Nw_Photo3.Length > 0)
+                    {
+                        <img src="@Url.Content(Model.NewsItems[Model.SeletedNews].Nw_Photo3)" class="Img_News" />
+                    }
+                    @if (Model.NewsItems[Model.SeletedNews].Nw_Photo4.Length > 0)
+                    {
+                        <img src="@Url.Content(Model.NewsItems[Model.SeletedNews].Nw_Photo4)" class="Img_News" />
+                    }
+                </td>
+            </tr>
+        </table>
+    }
+    else
+    {
+        @Html.Raw("");
+    }
+    <br />
+</center>

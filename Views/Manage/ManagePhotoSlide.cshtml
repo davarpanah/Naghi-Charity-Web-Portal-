@@ -1,0 +1,87 @@
+﻿<style type="text/css">
+    img{width: 200px;
+        height: 150px;
+    }
+    td{
+        text-align: center;
+        padding: 10px;
+    }
+
+    table{
+        border: solid;
+        border-color: green;
+    }
+    .DeleteImage{
+        width: 35px;
+        height: 20px;
+        font-size: 10px;
+        color: green;
+    }
+</style>
+@{
+    ViewBag.Title = "مدیریت تصاویر اسلایدشو";
+}
+@model List<test1.Models.PhotoSlide>
+<h2>@ViewBag.Title</h2>
+
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".DeleteImage").click(function (e) {
+            var r = confirm("مطمئن به حذف عکس هستید؟");
+            if (r == true) {
+                var clicked = $(e.target);
+                clicked.siblings(0).filter('label').css('color', 'red');
+                clicked.siblings(0).filter('checkbox').prop('disabled', true);
+                clicked.siblings(0).filter('#DeletedImg').eq(0).prop('value', true);
+            }
+        })
+    })
+</script>
+<center>
+    @using (@Html.BeginForm("NewPhotoSlide", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="btn btn-default" >
+            <input type="file" name="file" id="file" accept="image/*" value="بارگذاری"  class="btn alert-danger" />
+            <input type="submit" id="NewPhotoSlide" value="اعمال عکس جدید" class="btn alert-danger" />
+        </div>
+    }
+    <br />
+    @using (@Html.BeginForm("ManagePhotoSlide", "Manage", FormMethod.Post))
+        {
+            @Html.Raw("<table>");
+            var ItemsinRow = 4;
+            foreach (var item in Model.Select((value, i) => new { i, value }))
+            {
+                if (item.i % ItemsinRow == 0)
+                {
+                    @Html.Raw("<tr>");
+                }
+                <td>
+                    <img src="@Url.Content(item.value.Ph_Path)"/>
+                    <br/>
+                    @Html.CheckBoxFor(m => m[item.i].Ph_Showable)
+                    @Html.Raw("<label>نمایش</label>")
+                    @Html.Raw("<input type='button' value='حذف' class='DeleteImage'/>")
+                    @Html.HiddenFor(m => m[item.i].Ph_Path)
+                    @Html.HiddenFor(m => m[item.i].Ph_Id)
+                    @Html.HiddenFor(m => m[item.i].Ph_Deleted, new { @id="DeletedImg" })
+                </td>
+                if (item.i % ItemsinRow == (ItemsinRow - 1))
+                {
+                    @Html.Raw("</tr>");
+                }
+            }
+            if (Model.Count % ItemsinRow != (ItemsinRow - 1))
+            {
+                @Html.Raw("</tr>");
+            }
+            @Html.Raw("</table><br/>");
+            //TempData["FullModel"] = Model;
+            <input type="submit" class="btn alert-danger" value="اعمال تغییرات"/>
+        }
+</center>
+<br/>
+

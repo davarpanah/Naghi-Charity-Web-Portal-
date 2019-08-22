@@ -1,0 +1,142 @@
+﻿<style>
+    td a img{width:120px; height:  80px;}
+</style>
+
+@model test1.Models.IndexViewModel
+@{
+    ViewBag.Title = "مدیریت";
+}
+
+<h2>@ViewBag.Title</h2>
+<br/>
+<p class="text-success">@ViewBag.StatusMessage</p>
+<center>
+    <table>
+        <tr>
+            <td>
+                <div>
+                    @if (Model.HasPassword)
+                    {
+                        <p><a class="btn btn-default" href="~/Manage/ChangePassword" title="تغییر رمز عبور"><img src="~/Content/images/ChangePassword.jpg"></a></p>
+                    }
+                    else
+                    {
+                        <p><a class="btn btn-default" href="~/Manage/SetPassword" title="تولید رمز عبور"><img src="~/Content/images/NewPassword.jpg"></a></p>
+                    }      
+                </div>
+            </td>
+            <td>
+                <div>
+                    @if (Model.PhoneNumber != null)
+                    {
+                        <p><a class="btn btn-default" href="~/Manage/RemovePhoneNumber" title="حذف شماره تلفن"><img src="~/Content/images/DeletePhone.jpg"></a></p>
+                    }
+                    else
+                    {
+                        <p><a class="btn btn-default" href="~/Manage/AddPhoneNumber" title="شماره تلفن جدید"><img src="~/Content/images/NewPhone.jpg"></a></p>
+                    }
+                </div>
+            </td>
+            <td>
+                <div>
+                    <p><a class="btn btn-default" href="~/Manage/ChangePersonalInformation" title="اصلاح اطلاعات فردی"><img src="~/Content/images/UpdateInformation.jpg"></a></p>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <p><a class="btn btn-default" href="~/Manage/MyOnlinePayments" title="پرداختهای آنلاین من"><img src="~/Content/images/MyOnlineHelps.jpg"></a></p>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <p><a class="btn btn-default" href="~/Manage/MyPeriodicPayments" title="پرداختهای دوره ای تعهدی من"><img src="~/Content/images/MyPeriodics.jpg"></a></p>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div>
+                    @if (Model.GroupType == 3)//Manager
+                    {
+                        <p><a class="btn btn-default" href="~/Manage/UserGroupChange" title="تعیین گروه کاربران"><img src="~/Content/images/UserGroups.jpg"></a></p>
+                    }
+                </div>
+            </td>
+            <td>
+                <div>
+                    @if (Model.GroupType == 3)//Manager
+                    {
+                        <p><a class="btn btn-default" href="~/Manage/UserActivation" title="فعال/غیر فعال سازی کاربران"><img src="~/Content/images/UserActivation.jpg"></a></p>
+                    }
+                </div>
+            </td>
+            <td>
+                <div>
+                    @if (Model.GroupType == 3)//Manager
+                    {
+                        <p><a class="btn btn-default" href="~/Manage/DonatorsList" title="لیست خیرین/یادآوری"><img src="~/Content/images/DonatorsList.jpg"></a></p>
+                    }
+                </div>
+            </td>
+            <td>
+                <div>
+                    @if (Model.GroupType == 3)//Manager
+                    {
+                        <p><a class="btn btn-default" href="~/Manage/AllOnlinePaymentsList" title="لیست پرداختیهای آنلاین ثبت شده"><img src="~/Content/images/OnlineHelpsList.jpg"></a></p>
+                    }
+                </div>
+            </td>
+            <td>
+                <div>
+                    @if (Model.GroupType == 3)//Manager
+                    {
+                        <p><a class="btn btn-default" href="~/Manage/WishListUpdation" title="اصلاح لیست مایحتاج"><img src="~/Content/images/WishListUpdation.jpg"></a></p>
+                    }
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div>
+                    @if (Model.GroupType == 3)//Manager
+                    {
+                        <p><a class="btn btn-default" href="~/Manage/ManagePhotoSlide" title="مدیریت اسلاید شو"><img src="~/Content/images/SlideShow.jpg"></a></p>
+                    }
+                </div>
+            </td>
+            <td>
+                <div>
+                    @if (Model.GroupType == 3)//Manager
+                    {
+                        <p><a class="btn btn-default" href="~/Manage/ManageNews?Nw_Type=1" title="مدیریت رویدادها و وهمایشها"><img src="~/Content/images/EventManagement.jpg"></a></p>
+                    }
+                </div>
+            </td>
+            <td>
+                <div>
+                    @if (Model.GroupType == 3)//Manager
+                    {
+                        @*<p><a class="btn btn-default" href="~/Manage/ManageNews?Nw_Type=0" title="مدیریت خبر"><img src="~/Content/images/NewsManagement.jpg"></a></p>
+                        *@
+                    }
+                </div>
+            </td>
+            <td>
+                <div>
+                    @if (Model.GroupType == 3)//Manager
+                    {
+                    }
+                </div>
+            </td>
+            <td>
+                <div>
+                    @if (Model.GroupType == 3)//Manager
+                    {
+                    }
+                </div>
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <br />
+</center>
